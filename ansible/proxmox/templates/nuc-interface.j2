@@ -1,0 +1,35 @@
+# auto means bringing up on boot
+auto lo
+iface lo inet loopback
+
+# - wireless
+iface wlo1 inet manual
+
+# - 2.5 G ethnernet 
+iface {{ nuc_ethernet_name }} inet manual
+
+# the virtual interface bridge to {{ nuc_ethernet_name }}
+auto vmbr0
+iface vmbr0 inet static
+    address {{ nuc_ethernet_address }}
+    gateway {{ nuc_ethernet_gateway }}
+    bridge_ports {{ nuc_ethernet_name }}
+    bridge-stp off
+    bridge-fd 0
+
+# -- Thunderbolt Setting --
+# auto tb0
+# iface tb0 inet static
+#     ## self defined internal ip-0
+#     address {{ nuc_tb0_address }}
+#     ## self defined peer ip on thunderbolt0
+#     up ip route add {{ nuc_tb0_peer_address }} dev tb0
+#     down ip route del {{ nuc_tb0_peer_address }} 
+
+# auto tb1
+# iface tb1 inet static
+#     ## self defined internal ip-1
+#     address {{ nuc_tb1_address  }}
+#     ## self defined peer ip on thunderbolt1
+#     up ip route add {{ nuc_tb1_peer_address }} dev tb1
+#     down ip route del {{ nuc_tb1_peer_address }}

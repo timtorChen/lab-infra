@@ -1,0 +1,39 @@
+ansible_user: root
+ansible_password: ENC[AES256_GCM,data:5OkQM4uaHx0=,iv:gGthVBlkvcVf/QHwptZEj33ewseKB/yboRVYJlcJH58=,tag:2WHJPBDH2rRZtoeTRzBkfw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2022-02-14T18:01:56Z"
+    mac: ENC[AES256_GCM,data:72it38xVw3LZaeOVjJQzvsRBartWjofbhmgy23/iA064vIaMxK097dUmzZGSY4MgTAmPJ5Cvai7NLRFHrITc8mlrkb5RLX2DgQ4ZULW6xcDqG/CZZsFj0dOG24mZJvkioh1d0bUjsH9rIgdVTnZvlRcwZUiCMywgOIdEx/3jdHY=,iv:qIQFvychgqNpWKcqFpWQuEAVMshkACmss3DkKt6nF4s=,tag:J4PLFeC6z/wuBSe0D9DApw==,type:str]
+    pgp:
+        - created_at: "2021-11-02T08:25:54Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQMOA7Xwm0UuZgqEEAwAkeC2WE3EGBkg+gKmsGcKNf4LagRFEWXTpnuGrjFhdiEY
+            bkOXVeP1hZV59PvoUcJ1gk0zcJGzxlJBRpECzyj8UGoE4ebvs9YSxYrc04nN6t0Q
+            h8dkSGN2Z7GNyOXZu3d9grfN33hEsJulAByPZNSCb9OZ9pCthj3SfSZriFCsqYlp
+            X/CpIKGWmyRjLB/NiVTRp6Idw1kATXlzApLykGUJ2uZ9Und7FzpCFdBW1jbrvRKu
+            LGfYxEVJDm8p979UCa+iQ3s0NL+e6ER1gjJRwQJBLYrJIecOwDI3kcqecF04BiD4
+            Cji+yJvtGKFsUz51MdGXzsbXCqUJ4x/ah1yJOrzuVkAnLhZikHzhcsb45F5NFL1h
+            1AWKN7viKJpWKg4Y5QmQU4g8gwqITzrpr+3IG7ArSL9W5lxCUiI9NQNt9RnVsFub
+            oOojfzMih1Cy4gGQBkvmp173/VDqlKc/FTs0i2ZpDCSGFn7jV34vSISTgu5rvUMg
+            TuDe3oGTLu//ZbblgVvbC/9yDYPWZcKlorE5QZQCiyFuzrM0i7xrO7Zp/xQnk25t
+            Rce2sTeqAH8Ad0sbpJ/MeKxh/nqxl+fV0teVj1n+ZHTn5VjzYTC2IYIn6+K/fzPk
+            Ridxz2d7ynTUnSoZZrgy7P22rXduDUvoaHXihILWsMk6bDNW8vMT6DEkgwhiSWdl
+            Ag593JgQXzttdblwjpU/8GZxo0c5Jgn4S5glaDjwZe+DYWFO4jCfDb+CBfCtfrCR
+            1eCyZKv+01fLATpLRBaF9RSMlwJfc8qdb6KTTLsvTv4icplKGKcEueXufa94twvg
+            bcuaAt8p+qwBns7cLn9qRKGH7mEQRde8d4XnVuDe/B2wTO6sAvPr71/sToZp39c2
+            4VjskNQVbHuYxBOrVHqxdvE9f3lTtLKpvoOS4i1ZN82R6CnMCunRAqdQUo71qoTq
+            6j/0IiHaGmxeBn6ojIvDbd9rrst0SkW/lZFv5sSmcydSV9DfOx8pd8JTci8Dcw5v
+            RNqnb3UKV/rZ6dfDDgX+gjvSXAF1YexkmTKeyNk77HKwPI0qF0W0bD8YHCmvMeL+
+            miTCDqnZhEWCNa/VgEr9Qj/bGbcr6WLjjlbkClMGnmrTIwlXjNnovrzMQA66MXjU
+            /MV+KkyFHT8JBX5yDBt+
+            =ZsUF
+            -----END PGP MESSAGE-----
+          fp: B5F09B452E660A84
+    encrypted_regex: (^ansible_password$)
+    version: 3.7.1

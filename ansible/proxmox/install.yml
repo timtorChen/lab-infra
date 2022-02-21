@@ -1,0 +1,59 @@
+- hosts: all
+  name: Initiate pve nodes
+  tags: [init]
+  tasks:
+    - name: Setup hostname
+      hostname:
+        name: "{{ inventory_hostname }}"
+
+    - name: Setup ssh publickey
+      authorized_key:
+        state: present
+        user: "{{ ansible_user }}"
+        key: https://github.com/timtorchen.keys
+
+    - name: Disable enterprise subscription
+      apt_repository:
+        repo: deb https://enterprise.proxmox.com/debian/pve {{ ansible_distribution_release }} pve-enterprise
+        state: absent
+
+    - name: Install common tools
+      package:
+        name:
+          - net-tools
+          - iperf3
+          - bolt
+          - mtr
+          - trash-cli
+          - vim
+          - jq
+          - htop
+
+    - name: Configure network - link ethernet device to a fixed name in udev rules
+      template:
+        src: templates/01-nuc-network.rules.j2
+        dest: /etc/udev/rules.d/01-nuc-network.rules
+      register: _udev
+
+    - name: Configure nework - setup /etc/network/interface
+      template:
+        src: templates/nuc-interface.j2
+        dest: /etc/network/interfaces
+      register: _interface
+
+    - name: Reboot for udev rule is changed
+      reboot:
+        pre_reboot_delay: 10
+      when: _udev.changed
+      throttle: 1
+
+    - name: Restart nework service for interface is changed
+      shell: systemctl restart networking && sleep 15
+      when: not _udev.changed and _interface.changed
+      throttle: 1
+
+- hosts: all
+  name: Install Proxmox
+  tags: [proxmox]
+  roles:
+    - role: lae.proxmox

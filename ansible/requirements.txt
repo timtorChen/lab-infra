@@ -1,0 +1,6 @@
+# ansible
+ansible>=5.3.*
+
+# galaxy lae.proxmox
+jmespath>=0.10.*
+netaddr>=0.8.*

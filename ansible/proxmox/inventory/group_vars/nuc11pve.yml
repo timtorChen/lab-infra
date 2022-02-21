@@ -1,0 +1,43 @@
+pve_group: nuc11pve        # pve group name and cluster name
+pve_watchdog: nmi_watchdog # use default software watchdog
+pve_cluster_enabled: true  
+
+# # ceph public network
+# pve_ceph_network: 192.168.254.0/16
+# # ceph internal network
+# pve_ceph_cluster_network: 10.10.10.0/24
+
+
+pve_ceph_enabled: true
+pve_ceph_osds:
+  - device: /dev/nvme0n1
+  - device: /dev/sda4
+
+pve_ceph_crush_rules:
+  - name: ssd-rule
+    class: ssd
+    type: host
+    min-size: 2
+    max-size: 3
+
+  - name: nvme-rule
+    class: nvme
+    type: host
+    min-size: 2
+    max-size: 3
+
+pve_ceph_pools:
+  - name: vm-ssd
+    rule: ssd-rule
+    application: rbd
+    pgs: 32
+    autoscale_mode: "on"
+    storage: true
+
+pve_ceph_fs:
+  - name: k8s-storage-nvme
+    rule: nvme-rule
+    pgs: 32
+    storage: false
+    mountpoint: /srv/proxmox/k8s-storage-nvme
+

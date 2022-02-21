@@ -1,0 +1,27 @@
+version: "3"
+
+vars:
+  SECRET_PATHS_REGEX:
+    sh: yq e '.creation_rules[].path_regex' .sops.yaml | tr '\n' '|'
+  SECRET_FILES:
+    sh: '{{ if eq OS "linux" }} find
+      {{ else if eq OS "osx"}} gfind
+      {{ end }} -type f -regextype posix-egrep -regex "{{.SECRET_PATHS_REGEX}}"'
+
+tasks:
+  init:
+    dir: ansible
+    cmds: 
+      - pwd
+      - pip install -r requirements.txt --user
+      - ansible-galaxy install -r galaxy.yml --force
+
+  ls-secrets:
+    silent: true
+    cmds:
+      - echo "Find secrets with regex {{.SECRET_PATHS_REGEX}} definded in .sops.yaml file"
+      - echo "{{.SECRET_FILES}}"
+  enc:
+    silent: true
+    cmds:
+      - echo "{{.SECRET_FILES}}" | xargs  -I {} sops -e -i {}
