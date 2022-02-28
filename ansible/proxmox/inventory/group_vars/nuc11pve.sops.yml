@@ -1,0 +1,102 @@
+# pve group name and cluster name
+pve_group: nuc11pve
+# use default software watchdog
+pve_watchdog: nmi_watchdog
+pve_cluster_enabled: true
+pve_roles:
+    - name: Terraform-provisioner
+      privileges:
+        - VM.Allocate
+        - VM.Migrate
+        - VM.Clone
+        - VM.Config.CDROM
+        - VM.Config.CPU
+        - VM.Config.Cloudinit
+        - VM.Config.Disk
+        - VM.Config.HWType
+        - VM.Config.Memory
+        - VM.Config.Network
+        - VM.Config.Options
+        - VM.Monitor
+        - VM.Audit
+        - VM.PowerMgmt
+        - Datastore.AllocateSpace
+        - Datastore.Audit
+pve_users:
+    - name: tf-prov@pve
+      password: ENC[AES256_GCM,data:88uvnpjJULpk4GqldFu7Cg==,iv:jV7SfQ5YbqnlMvWOjTiDiN7y2HuL889Y7cuEaktuLHA=,tag:ei9CJ+rflcbWcNjYvesJOw==,type:str]
+pve_acls:
+    - path: /
+      roles:
+        - Terraform-provisioner
+      users:
+        - tf-prov@pve
+# # ceph public network
+# pve_ceph_network: 192.168.254.0/16
+# # ceph internal network
+# pve_ceph_cluster_network: 10.10.10.0/24
+pve_ceph_enabled: true
+pve_ceph_osds:
+    - device: /dev/nvme0n1
+    - device: /dev/sda4
+pve_ceph_crush_rules:
+    - name: ssd-rule
+      class: ssd
+      type: host
+      min-size: 2
+      max-size: 3
+    - name: nvme-rule
+      class: nvme
+      type: host
+      min-size: 2
+      max-size: 3
+pve_ceph_pools:
+    - name: vm-ssd
+      rule: ssd-rule
+      application: rbd
+      pgs: 32
+      autoscale_mode: "on"
+      storage: true
+pve_ceph_fs:
+    - name: k8s-storage-nvme
+      rule: nvme-rule
+      pgs: 32
+      storage: false
+      mountpoint: /srv/proxmox/k8s-storage-nvme
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2022-02-27T09:34:17Z"
+    mac: ENC[AES256_GCM,data:8qTdMMSPxkkIQyo5Wzxq7iNH4Bv0phRmUngMg/hCo506F3fbOh8BmIiNsvPhNLj20/m6xgReYMKL9ZG8fVeUwfC8JaDaNzp8zIBIJeT0QcHi8OYpktzzYiJvekEl+XS9vQbRqFszyx7QXUzsKMba/fgbpXKU8JnPzsk0AY8yF7A=,iv:evkU5BZFSgGu7ExN3IA70KBU4m6a3JTcfm7AAKxeOZ8=,tag:2wEsKMOwdSb9WP/mGHJvHg==,type:str]
+    pgp:
+        - created_at: "2022-02-24T10:38:46Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQMOA7Xwm0UuZgqEEAv9HTINxRFIwuq2XRrcGs0we7/herm3EYhNSXz3dJ/HLJip
+            P+1mWtCtdfZ02jIG9c44JT3mXDeoXKFmr4b1UT1jEkPqSghH00NDGxT79puayVij
+            xT51tLqUP5wXE28yu+EUi7fBQsUKd2Y7A/tnLYulJfVTAWEzWG9Lu3yWfNyHpgcF
+            G/kVCmVJP7fZ/HkB12UDfqDBBkyXU+K2cjMpkVRQyuFQrD8c7K7o0eNDkuo6Sjvm
+            b1ajAJ9Rkpy9cvjxACvH2fjjP5byrYyndTBWwxkjVewTFjLuSjHWEpcgfLNKpnN9
+            ybw88KaOZ1tj+/whXCjhC4i+YDezgsy7A9xbPTBw+Ps5BWZZv+prtkX3KpikZpIM
+            S6So3MiiiawPjIO36O9/TXD5k/bbfc3NjESVrmHI5e8VirxWRpY0CdFtUBGUaOw1
+            qNWNT1DYd2IZiwndXdwIpHvlgnYvOO+mEYl3O1GTA3S7Uho0vr+2Xr3SpQlN/LWV
+            WmUFDQ0NtSXjsBUzDBi9C/9O3Y9If5nhV5Zey4iGakrA8wpM9EkOkGXkCgOyhEUN
+            jHZywjSEEnvxN3zwNbeKo4nhxShSn1S3zUYbEcPrK/knZI1FWuYhD465yTrvoZRL
+            MWq1ntuU39uuSm/2rImP62fuysZcJd3HC18VRepr/Z6ldX7extwUSISsOTRw6FJY
+            5gN+yvstLzLBVQZncXiDSNLMJKMKQZw9l6ORSEBbpnnb7/mgwtfeKluSWO1xCZTz
+            DfrO5H9FX1W0mxdShGJyg/nv85U3RR3Gop39w3dXtHPnaf9mxFA5OU+kVCRsz17P
+            EugT5h7R8cEYyMBZWhtvcK0cZOS9TDppEKqMSNiYBg88jn8MWLG8U5KD4M59MtTm
+            rI+erpqilN8h4EKpD3mc7udacVdEBQrjbegjuv+IfmMjIgtzztYASSvg/RaxXwY/
+            p9j+YObpdepGk2SMVIw4LLmU/Mw1Sxjj176s2QE0w+VujKdNchGZ3xhgTTDghF8D
+            ytZOQmZ/uOLYoOz2DXAfCEXSXgHKCgFY2wR2WdhtiEliryebuPYrs9zEwcUn7RQk
+            IguarG+F1lqmXl1JKSIrpMSKERB9j60Wy0msjYhEn+J81rPbQD4wFmFmgv93N3CB
+            eZSc/0Fc5PUIAsEgRfkrWhA=
+            =bmov
+            -----END PGP MESSAGE-----
+          fp: B5F09B452E660A84
+    encrypted_regex: ([Pp]assword)
+    version: 3.7.1

@@ -1,39 +1,39 @@
 ansible_user: root
-ansible_password: ENC[AES256_GCM,data:5OkQM4uaHx0=,iv:gGthVBlkvcVf/QHwptZEj33ewseKB/yboRVYJlcJH58=,tag:2WHJPBDH2rRZtoeTRzBkfw==,type:str]
+ansible_password: ENC[AES256_GCM,data:G+Trpx26RZQ=,iv:fgu36LeotnS8mpjf5xoyNKTDKrCVROu5oDDmZ1yXW6Q=,tag:5fnyknzTybdO5ssPJF9aLQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-02-14T18:01:56Z"
-    mac: ENC[AES256_GCM,data:72it38xVw3LZaeOVjJQzvsRBartWjofbhmgy23/iA064vIaMxK097dUmzZGSY4MgTAmPJ5Cvai7NLRFHrITc8mlrkb5RLX2DgQ4ZULW6xcDqG/CZZsFj0dOG24mZJvkioh1d0bUjsH9rIgdVTnZvlRcwZUiCMywgOIdEx/3jdHY=,iv:qIQFvychgqNpWKcqFpWQuEAVMshkACmss3DkKt6nF4s=,tag:J4PLFeC6z/wuBSe0D9DApw==,type:str]
+    lastmodified: "2022-02-24T18:29:16Z"
+    mac: ENC[AES256_GCM,data:3sTb0Qpbo7LEVQiMsu+YhVylz1u2kU2WTAxpGmEcBgxDdwEvE8zc/3hYIvrK52XH+w3E6VB2sYWc4puQyPwbffvUeM53chwUUokz/g1eO4MEy41cjAysBwJ19RjvOpZUNZAReSp0VbcHlhE/8w4kfx6ScYmYQFyk+PoeS4okv0A=,iv:A0alnHZAv946+BmZQCpLpeM53VTrctUkKzCxV1owayw=,tag:iPMajXqf59FjWVbzM2+EAw==,type:str]
     pgp:
-        - created_at: "2021-11-02T08:25:54Z"
+        - created_at: "2022-02-24T18:29:15Z"
           enc: |
             -----BEGIN PGP MESSAGE-----
 
-            hQMOA7Xwm0UuZgqEEAwAkeC2WE3EGBkg+gKmsGcKNf4LagRFEWXTpnuGrjFhdiEY
-            bkOXVeP1hZV59PvoUcJ1gk0zcJGzxlJBRpECzyj8UGoE4ebvs9YSxYrc04nN6t0Q
-            h8dkSGN2Z7GNyOXZu3d9grfN33hEsJulAByPZNSCb9OZ9pCthj3SfSZriFCsqYlp
-            X/CpIKGWmyRjLB/NiVTRp6Idw1kATXlzApLykGUJ2uZ9Und7FzpCFdBW1jbrvRKu
-            LGfYxEVJDm8p979UCa+iQ3s0NL+e6ER1gjJRwQJBLYrJIecOwDI3kcqecF04BiD4
-            Cji+yJvtGKFsUz51MdGXzsbXCqUJ4x/ah1yJOrzuVkAnLhZikHzhcsb45F5NFL1h
-            1AWKN7viKJpWKg4Y5QmQU4g8gwqITzrpr+3IG7ArSL9W5lxCUiI9NQNt9RnVsFub
-            oOojfzMih1Cy4gGQBkvmp173/VDqlKc/FTs0i2ZpDCSGFn7jV34vSISTgu5rvUMg
-            TuDe3oGTLu//ZbblgVvbC/9yDYPWZcKlorE5QZQCiyFuzrM0i7xrO7Zp/xQnk25t
-            Rce2sTeqAH8Ad0sbpJ/MeKxh/nqxl+fV0teVj1n+ZHTn5VjzYTC2IYIn6+K/fzPk
-            Ridxz2d7ynTUnSoZZrgy7P22rXduDUvoaHXihILWsMk6bDNW8vMT6DEkgwhiSWdl
-            Ag593JgQXzttdblwjpU/8GZxo0c5Jgn4S5glaDjwZe+DYWFO4jCfDb+CBfCtfrCR
-            1eCyZKv+01fLATpLRBaF9RSMlwJfc8qdb6KTTLsvTv4icplKGKcEueXufa94twvg
-            bcuaAt8p+qwBns7cLn9qRKGH7mEQRde8d4XnVuDe/B2wTO6sAvPr71/sToZp39c2
-            4VjskNQVbHuYxBOrVHqxdvE9f3lTtLKpvoOS4i1ZN82R6CnMCunRAqdQUo71qoTq
-            6j/0IiHaGmxeBn6ojIvDbd9rrst0SkW/lZFv5sSmcydSV9DfOx8pd8JTci8Dcw5v
-            RNqnb3UKV/rZ6dfDDgX+gjvSXAF1YexkmTKeyNk77HKwPI0qF0W0bD8YHCmvMeL+
-            miTCDqnZhEWCNa/VgEr9Qj/bGbcr6WLjjlbkClMGnmrTIwlXjNnovrzMQA66MXjU
-            /MV+KkyFHT8JBX5yDBt+
-            =ZsUF
+            hQMOA7Xwm0UuZgqEEAwA1GPNOiMEf18bR+L98JC39HOlt5JbFMUvx56Q6qTAKdco
+            K5Ajv9Q7NyJNNyE5PHWWIbxsl37VtzURUvXHt0NtMSumfWRhtI1MnTO0ydv++o/V
+            yMhePUIKYFa/9sfvUK2mh6jUwVvrCcROaeBaaX4Tq8NYs9MhAQa978S26rwnFNvF
+            t0V55Hp5GHThQpFVX3Iek9zNb9q8WwlOYIgKM2mxVGJqhJoqEl43n/1gpbjNA6VI
+            mfr208OYaQKBFpEHXfoCRhVYy20TGxkjNYzC6MLtuoPXiygnPB8TCQ72Yp5EmCfz
+            cdP1jlKArStnZof5t1yc/VVAzx71NkpgEH1xNkN35zQ6WPHHNxfu2nT5NSa6wviz
+            W4QHKLhrj0vwspzEfH3lcU2VnVpRCl1OxJ7o+nK1ePondp7Kobba9AW8901zuPrf
+            9nEvdwsJuxj+fiQV2DYEDOkuBYFUnnVzTTgsSU62UK1tu0yRaS05i9omM06sQSNO
+            0bPfGZk/AV47Z98baJ0NDADNo9kbYcJZNycjCFKoLWwcRgexIS0jcuRsCHjoOnT2
+            HeV7Ugp5AV/NipMrdCx+YbE8tueFe59EaaACq7QG/XxLiF8IR1e7Cf4LnzLdKoFL
+            eMG0Dhr1MTdar733QF21r2alcrzJUzTwuhPVIffn70OdbJdQ47M0VQncPRqumNz0
+            m4JqcFs/xa06DbeFL1WMG9KuLJBaSiz/C2CzVPxuwDiw7xTAMnIe9FUiaWmOoTkh
+            Y2gK4lYYwKy9SlmyR4//qlzoaWBU3ekfiUgVNQ7qTz2tNILN9Si9KKrjOuBm38g1
+            zy18h/j7JTRB6ncAKDVSf3vrAp0NUkoZnn9HyejXxeOwmpIg28etAOu/Q79KFchu
+            4EXsfE3m+FNWcpJTMYvQghOeoslZ+1DAjGrhcH7N2fPufJSZxGnC5iulBMJ7QB0Y
+            eO/68KSDOwtW/ZHByvd6Amn3SYIBHuD+JHRKayEldVB7fV58B2daGaLxVXDD6o08
+            bhzGY1zIZmLOFOvBnCAq0U3SXgG18DS5f8XZwEd3cqlrebhpYPhNGVqtwJGbrrwe
+            im13t9+Bgus2sG3oGxtjbFHdBju53IycM9AGEi526CUFwBIctqxnT0sGsB2c5etl
+            vsEeqLcL9H2qmToQlpwG8yU=
+            =EOBf
             -----END PGP MESSAGE-----
           fp: B5F09B452E660A84
-    encrypted_regex: (^ansible_password$)
+    encrypted_regex: ([Pp]assword)
     version: 3.7.1
