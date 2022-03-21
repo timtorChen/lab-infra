@@ -29,6 +29,12 @@
           - jq
           - htop
 
+    - name: Disalbe DNS resolver search domain
+      lineinfile:
+        path: /etc/resolv.conf
+        regexp: "^search"
+        state: absent
+
     - name: Configure udev - set networking device to a fixed name "eth0"
       template:
         src: templates/01-nuc-network.rules.j2
