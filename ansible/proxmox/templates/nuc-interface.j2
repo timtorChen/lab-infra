@@ -18,18 +18,20 @@ iface vmbr0 inet static
     bridge-fd 0
 
 # -- Thunderbolt Setting --
-# auto tb0
-# iface tb0 inet static
-#     ## self defined internal ip-0
-#     address {{ nuc_tb0_address }}
-#     ## self defined peer ip on thunderbolt0
-#     up ip route add {{ nuc_tb0_peer_address }} dev tb0
-#     down ip route del {{ nuc_tb0_peer_address }} 
+# thunderbolt 0 port is in the back
+allow-hotplug thunderbolt0
+iface thunderbolt0 inet static
+    ## self defined internal ip-0
+    address {{ nuc_tb0_address }}
+    ## self defined peer ip on thunderbolt0
+    up ip route add {{ nuc_tb0_peer_address }} dev thunderbolt0
+    down ip route del {{ nuc_tb0_peer_address }} 
 
-# auto tb1
-# iface tb1 inet static
-#     ## self defined internal ip-1
-#     address {{ nuc_tb1_address  }}
-#     ## self defined peer ip on thunderbolt1
-#     up ip route add {{ nuc_tb1_peer_address }} dev tb1
-#     down ip route del {{ nuc_tb1_peer_address }}
+# thunderbolt 1 port is in the front
+allow-hotplug thunderbolt1
+iface thunderbolt1 inet static
+    ## self defined internal ip-1
+    address {{ nuc_tb1_address  }}
+    ## self defined peer ip on thunderbolt1
+    up ip route add {{ nuc_tb1_peer_address }} dev thunderbolt1
+    down ip route del {{ nuc_tb1_peer_address }}

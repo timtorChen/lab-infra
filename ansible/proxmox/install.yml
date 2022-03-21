@@ -29,7 +29,7 @@
           - jq
           - htop
 
-    - name: Configure network - link ethernet device to a fixed name in udev rules
+    - name: Configure udev - set networking device to a fixed name "eth0"
       template:
         src: templates/01-nuc-network.rules.j2
         dest: /etc/udev/rules.d/01-nuc-network.rules
@@ -40,6 +40,24 @@
         src: templates/nuc-interface.j2
         dest: /etc/network/interfaces
       register: _interface
+
+    - name: Configure thunderbolt - enable kernel module
+      community.general.modprobe:
+        name: thunderbolt-net
+
+    - name: Configure thunderbolt - check if kernel module is set on startup
+      lineinfile:
+        path: /etc/modules
+        state: absent
+        regexp: "thunderbolt-net"
+      check_mode: true
+      register: check
+
+    - name: Configure thunderbolt - set thunderbolt module on boot
+      when: check.found == 0
+      lineinfile:
+        path: /etc/modules
+        line: "thunderbolt-net"
 
     - name: Reboot for udev rule is changed
       reboot:
