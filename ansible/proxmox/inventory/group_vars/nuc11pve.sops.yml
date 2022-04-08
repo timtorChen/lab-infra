@@ -3,6 +3,8 @@ pve_group: nuc11pve
 # use default software watchdog
 pve_watchdog: nmi_watchdog
 pve_cluster_enabled: true
+pve_reboot_on_kernel_update: false
+pve_remove_old_kernels: false
 pve_roles:
     - name: Terraform-provisioner
       privileges:
@@ -24,7 +26,7 @@ pve_roles:
         - Datastore.Audit
 pve_users:
     - name: tf-prov@pve
-      password: ENC[AES256_GCM,data:88uvnpjJULpk4GqldFu7Cg==,iv:jV7SfQ5YbqnlMvWOjTiDiN7y2HuL889Y7cuEaktuLHA=,tag:ei9CJ+rflcbWcNjYvesJOw==,type:str]
+      password: ENC[AES256_GCM,data:TfF/0A9sZ+9HMOW5szzUEw==,iv:cIBz7gFauqt0rwzKkAsJVaW/RrD3ewRl5DAcxGiS0os=,tag:3nJDnYgv3x5zFoO64scr6g==,type:str]
 pve_acls:
     - path: /
       roles:
@@ -57,7 +59,18 @@ pve_ceph_pools:
       pgs: 32
       autoscale_mode: "on"
       storage: true
+    - name: vm-nvme
+      rule: nvme-rule
+      application: rbd
+      pgs: 32
+      autoscale_mode: "on"
+      storage: true
 pve_ceph_fs:
+    - name: k8s-storage-ssd
+      rule: ssd-rule
+      pgs: 32
+      storage: false
+      mountpoint: /srv/proxmox/k8s-storage-ssd
     - name: k8s-storage-nvme
       rule: nvme-rule
       pgs: 32
@@ -69,34 +82,34 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-02-27T09:34:17Z"
-    mac: ENC[AES256_GCM,data:8qTdMMSPxkkIQyo5Wzxq7iNH4Bv0phRmUngMg/hCo506F3fbOh8BmIiNsvPhNLj20/m6xgReYMKL9ZG8fVeUwfC8JaDaNzp8zIBIJeT0QcHi8OYpktzzYiJvekEl+XS9vQbRqFszyx7QXUzsKMba/fgbpXKU8JnPzsk0AY8yF7A=,iv:evkU5BZFSgGu7ExN3IA70KBU4m6a3JTcfm7AAKxeOZ8=,tag:2wEsKMOwdSb9WP/mGHJvHg==,type:str]
+    lastmodified: "2022-04-08T07:14:29Z"
+    mac: ENC[AES256_GCM,data:m929JdPrfJ4Inl8Ls3AaY6yHCQbm1v6DHmpA9nWPgw7QXq+3hKl6Unp+JTUhlPtKmloUTE8TJaFfn+m5t7u+G+iKLDNYXPxxTUjHKhr6YMoN/Ns/0fDg4of0tOunloi+YGdH5BEa0ccU62/w6gim1b7FqSJUNuDro6v1GbpaJRM=,iv:1IdvkrXE+k1mJOgm69ZrF264r4ce36+qaLS/XJfxp80=,tag:wQaXel0/Jds7GZ9cqEyePA==,type:str]
     pgp:
-        - created_at: "2022-02-24T10:38:46Z"
+        - created_at: "2022-04-08T07:14:27Z"
           enc: |
             -----BEGIN PGP MESSAGE-----
 
-            hQMOA7Xwm0UuZgqEEAv9HTINxRFIwuq2XRrcGs0we7/herm3EYhNSXz3dJ/HLJip
-            P+1mWtCtdfZ02jIG9c44JT3mXDeoXKFmr4b1UT1jEkPqSghH00NDGxT79puayVij
-            xT51tLqUP5wXE28yu+EUi7fBQsUKd2Y7A/tnLYulJfVTAWEzWG9Lu3yWfNyHpgcF
-            G/kVCmVJP7fZ/HkB12UDfqDBBkyXU+K2cjMpkVRQyuFQrD8c7K7o0eNDkuo6Sjvm
-            b1ajAJ9Rkpy9cvjxACvH2fjjP5byrYyndTBWwxkjVewTFjLuSjHWEpcgfLNKpnN9
-            ybw88KaOZ1tj+/whXCjhC4i+YDezgsy7A9xbPTBw+Ps5BWZZv+prtkX3KpikZpIM
-            S6So3MiiiawPjIO36O9/TXD5k/bbfc3NjESVrmHI5e8VirxWRpY0CdFtUBGUaOw1
-            qNWNT1DYd2IZiwndXdwIpHvlgnYvOO+mEYl3O1GTA3S7Uho0vr+2Xr3SpQlN/LWV
-            WmUFDQ0NtSXjsBUzDBi9C/9O3Y9If5nhV5Zey4iGakrA8wpM9EkOkGXkCgOyhEUN
-            jHZywjSEEnvxN3zwNbeKo4nhxShSn1S3zUYbEcPrK/knZI1FWuYhD465yTrvoZRL
-            MWq1ntuU39uuSm/2rImP62fuysZcJd3HC18VRepr/Z6ldX7extwUSISsOTRw6FJY
-            5gN+yvstLzLBVQZncXiDSNLMJKMKQZw9l6ORSEBbpnnb7/mgwtfeKluSWO1xCZTz
-            DfrO5H9FX1W0mxdShGJyg/nv85U3RR3Gop39w3dXtHPnaf9mxFA5OU+kVCRsz17P
-            EugT5h7R8cEYyMBZWhtvcK0cZOS9TDppEKqMSNiYBg88jn8MWLG8U5KD4M59MtTm
-            rI+erpqilN8h4EKpD3mc7udacVdEBQrjbegjuv+IfmMjIgtzztYASSvg/RaxXwY/
-            p9j+YObpdepGk2SMVIw4LLmU/Mw1Sxjj176s2QE0w+VujKdNchGZ3xhgTTDghF8D
-            ytZOQmZ/uOLYoOz2DXAfCEXSXgHKCgFY2wR2WdhtiEliryebuPYrs9zEwcUn7RQk
-            IguarG+F1lqmXl1JKSIrpMSKERB9j60Wy0msjYhEn+J81rPbQD4wFmFmgv93N3CB
-            eZSc/0Fc5PUIAsEgRfkrWhA=
-            =bmov
+            hQMOA7Xwm0UuZgqEEAv9GLCq121WCHpK//gNnqJnSLeiJPqSbSZBx+4Fd2IvaoFJ
+            Y17IxpxAeYzmXtiDZRC+QnFu1KYMdNWo78R1FmOLXklyygc8hWZe6YoXG2khqcXA
+            IdnrdPeMvc+oSxyKQRKonpiPKO7FGao4gB4MBFBrltnsfzMqFeCVwFIKhRDJbK9L
+            wcWvJPmMe4S0x+8F7mF/3gqLuZAO+O04BOz0MYRRozUo9pF6BbbihYnAGOJvRrFv
+            02SL2aoJgR0ic6v903m1VqJwuD5BOb5lCeo5lPcKXEdPzYC/hs/4d8V2RBeF1/1D
+            Q6ocYpu/t+1NW+L1vSAZycUUprIBVLfXqdgAb+SdaRVx0duuVpqQdjO5Iejt1gzj
+            XpPQt0/BX25csUrHPXmB117MHekMeQhU7qfdAQkoqJrpE9WZNye5+Iq+wKCBpQIa
+            OR6uCWWhkIuVbDxolwZG55fowF1mrDwFkVC+PGAtLoxE3uBSUu4/1tOwcw4qd6H5
+            c4qwQYTcrCDvUlwnknnJDADI8RGb7aTV2/mzfiH8GDJrYnWDgxuDOa2bgJe+8fjk
+            JJ2X+H6sST/B9uiML10tff3j0Rh17HnYPAKV7saG+dG2GN5wi0u6PmAET/wPwB1P
+            cYth63nN/pQTpGcGGA6lSglXFZH1B4eCq47ufUo3qhtLT+Oh35PertQJut/hJSfX
+            oxE/Kkd8pL7wfgCeL+9/KRPHljskYu9odGRAjrvv/fX1L77jHKcQZNc6yihgG6bX
+            HwtF13JuMaTqJ+bo0UOfwyaubGBWju0J7+lbs2DWFrrXYRSFrBzuzqaY5oKcXHk9
+            Kq3r/R076FibffdH8KiWwK+x9jC6nHREQFwES9vAINl7wFP8bcJeaY7bTTmIjo4L
+            Teq+VmIft42+bxz+kVk/9n+l9WArRAhNaIw+sgPtWlSG072qlIjOFdCYVObJtgsf
+            LHxQhkVAhprzcpZ6VJGfb1ranFAUUoUPonSwDswqLTMddtSF59X+q71JebnxmYqW
+            h0jETT3V0//b/Pwyxp8jFw7SXgEnKcgYcULcEeHmbfFlHHe0ljmIe3dNFdZyrg+c
+            eBT+tpIsk8hIfuYJlrMMT0ApjrwNEqwfGiou4y1nfjfEMCk81kycGG7AwPfFcf/K
+            +Dynq86PR0pN20X+JIF3i/E=
+            =E7A7
             -----END PGP MESSAGE-----
           fp: B5F09B452E660A84
     encrypted_regex: ([Pp]assword)
-    version: 3.7.1
+    version: 3.7.2

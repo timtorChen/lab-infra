@@ -1,4 +1,4 @@
 creation_rules:
     - pgp: B5F09B452E660A84
-      path_regex: ./ansible/.*\.sops\.(yml|yaml)$
+      path_regex: ansible/.*\.sops\.(yml|yaml)$
       encrypted_regex: ([Pp]assword)
