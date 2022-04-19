@@ -1,0 +1,11 @@
+- hosts: all
+  name: Prepare for NUC proxmox cluster
+  tags: [prep]
+  roles:
+    - role: nuc.proxmox
+
+- hosts: all
+  name: Install Proxmox
+  tags: [proxmox]
+  roles:
+    - role: lae.proxmox

@@ -1,0 +1,38 @@
+#- ehternet
+- name: Config udev to fix the ethernet interface name
+  template:
+    src: 01-ethernet.rules.j2
+    dest: /etc/udev/rules.d/01-ethernet.rules
+  register: _udev_ethernet
+
+#- thunderbolt
+- name: Enable thunderbolt kernel modules
+  include_tasks: utils/kernel-module.yml
+  loop:
+    - "thunderbolt-net"
+    - "intel-wmi-thunderbolt"
+
+- name: Config udev to fix the thunderbolt network interfaces name
+  template:
+    src: 02-thunderbolt.rules.j2
+    dest: /etc/udev/rules.d/02-thunderbolt.rules
+  register: _udev_thunderbolt
+
+#- network interface file
+- name: Setup network interface file
+  template:
+    src: interfaces.j2
+    dest: /etc/network/interfaces
+  register: _network
+
+#- Reboot or restart
+- name: Reboot
+  when: >
+    proxmox_reboot_enabled and
+    ( _network.changed or
+      _udev_ethernet.changed or
+      _udev_thunderbolt.changed )
+  reboot:
+    post_reboot_delay: 120
+  throttle: 1
+  register: _reboot

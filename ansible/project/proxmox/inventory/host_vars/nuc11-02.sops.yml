@@ -1,0 +1,53 @@
+#- node
+ansible_host: 192.168.254.2
+ansible_user: root
+ansible_password: ENC[AES256_GCM,data:eN/kjaiiUto=,iv:v0xYjgpwffHpyLAxgSNecYeuW13mD1G29/zjekCMMaM=,tag:p40FW7a3e3NscVer3DO05w==,type:str]
+#- nuc.proxmox
+# ethernet
+proxmox_ethernet_name: eth0
+proxmox_ethernet_mac_address: 1c:69:7a:a8:0b:b1
+proxmox_ethernet_address: '{{ ansible_host }}/21'
+proxmox_ethernet_gateway: 192.168.248.1
+# thunderbolt network mesh
+proxmox_tb0_interface_name: thunderbolt0
+proxmox_tb1_interface_name: thunderbolt1
+proxmox_ceph_internal_address: 10.10.10.2/24
+proxmox_ceph_tb0_peer_address: 10.10.10.3/32
+proxmox_ceph_tb1_peer_address: 10.10.10.1/32
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2022-04-19T12:35:32Z"
+    mac: ENC[AES256_GCM,data:XqrfnSTlrvwt3dTEKTmFpCN0rs/64LEBGyv0teDQk3+YTd2LMClxJpa6hHh8ALsC7U/BUbAvMU/d1vwLHnpdcYbIBNqf9V/NyIncl8uvW2yLEUXe3t+Fu9zxfiaT1fhFNV8xkA1FyOdAPBT0nL9ufYtqpNyOrD0c7VOwRPArd6c=,iv:/oQtOlKl0PSJRLBgu0Bz+qA92125jYiY6HUJdE1leZI=,tag:6HrNPPxLjK5okow34hyErQ==,type:str]
+    pgp:
+        - created_at: "2022-04-19T12:35:30Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQMOA7Xwm0UuZgqEEAv/XIdZSmGd69ESmrLXAldOc4eUFNgQVK24IKWcVPWlwNrz
+            YvhYe+wm+Sui3iTI8LekTTf1m2mtIvDQ76ksPl3+sNqeeha6Xx/aQdzargirID1q
+            Wl/wV/CbmgmCWQPIdXfUe0+vwbZCaggtx31jml/48neeL4+VpTjC0R/Q1qXb96Gk
+            1hXWKw+AoVUa4z05Pr38WOvZ4SIxU4+QvxQjkOe1fiGFHYKznZQFUpQEgBlvUCES
+            Lrt5/D2aixGX0hy2dOPK63BqpDQHROWSlJFkOcFniSpXAq/jK8WCu/lWwQAIkdyx
+            pSVhFC6cWfJYWoYmPX1DKlBwHp0dThjf0UZ71phpZEXcflT1cnGo5vadL4ppmXE2
+            vT/FkW2holb74FfjXGCZe6Ak4O2K3arIpuZNgych13CRjLEFAeMhdUVKus0lqMTr
+            VrRJBBgi14scbnzLCkEPDtLsmhNRhzb1HVqmhD971NvydAXX1lsjq8EPqOmwaQA0
+            O6Wv/KPQop4bqBy2Cp8zDACtIzdv49lMXW+Fvcwp/cdo0T8aHxLgN0fXLytGH9Uk
+            DMwV6K2WhZe0X7y6ZOb94NqCKv178HCuWeygBP0ZolKD056pxBC3tEwxUpqGK4e6
+            5jKvg4qDZxBl1/5lM+2MRG9D0Tv22aTq4LGiwW6rcc8z/f3cjk930iIHhuNc+PBt
+            Wc+7tHzw+HMDPBzHJZDxNF18XYmHBn5huRDeCCxw0f4P5OLrIEjcoBQrtYNWYNNe
+            eb9F/1Djy2wUWE1QwE2r0Mb0RRQT1Pm+mtJySzCYSQUAxoWzEuUwm5AeI0qUKxO0
+            YwsujaILVG5sWs+bQBkEjh+g/oVfm43n1T2iO6A2mKhxt6GF3DGxZblHU9jF3FVJ
+            fggi9RiMJ3aBYQaGP2SkYhV/eRgWRBpiDnwyBqMPY4lcVvK3u5eFM04IoL9xLY8x
+            XoVMEphO+a3bKwf0WNj5uZAvZ9L29wQlLkuw0tyLtQnzAaUpRZZ4q1Y7n5IoV6aP
+            4Q3XBXOK2pq73b50UsilgRrSXgG4iHwT2HVM3QCqUjTzhfl1uYeYv4A/YZlYavpd
+            zrKl7/L5+JoOXTcGyczXHwm3WU8u3OGLohdrWFZsDVNkIcHXNB4Yffn0RMpd6zSt
+            M0Hn3lW+ASd7h+nmWA3pB3o=
+            =GSZV
+            -----END PGP MESSAGE-----
+          fp: B5F09B452E660A84
+    encrypted_regex: ([Pp]assword)
+    version: 3.7.2

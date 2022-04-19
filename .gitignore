@@ -1,5 +1,5 @@
-# top secrets
+#- secrets
 .decrypted~*
 
-# galaxy 
-roles.galaxy
+#- ansible 
+_*.galaxy

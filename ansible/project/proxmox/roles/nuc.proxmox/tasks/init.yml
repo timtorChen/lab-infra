@@ -1,0 +1,24 @@
+- name: Set hostname
+  hostname:
+    name: "{{ proxmox_hostname }}"
+
+- name: Set ssh public key
+  authorized_key:
+    state: present
+    user: "{{ ansible_user }}"
+    key: "{{ proxmox_public_key }}"
+
+- name: Disable enterprise subscription
+  apt_repository:
+    repo: deb https://enterprise.proxmox.com/debian/pve {{ ansible_distribution_release }} pve-enterprise
+    state: absent
+
+- name: Install common tools
+  package:
+    name: "{{ proxmox_install_packages }}"
+
+- name: Disalbe DNS resolver search domain
+  lineinfile:
+    path: /etc/resolv.conf
+    regexp: "^search"
+    state: absent

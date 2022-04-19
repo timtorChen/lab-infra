@@ -1,3 +1,0 @@
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="{{ nuc_ethernet_mac_address }}", NAME="{{ nuc_ethernet_name }}"
-SUBSYSTEM=="net", DEVPATH=="/devices/pci0000:00/*:0d.2/domain0/*", NAME="thunderbolt0"
-SUBSYSTEM=="net", DEVPATH=="/devices/pci0000:00/*:0d.3/domain1/*", NAME="thunderbolt1"

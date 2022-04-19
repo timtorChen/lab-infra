@@ -1,0 +1,2 @@
+SUBSYSTEM=="net", DEVPATH=="/devices/pci0000:00/*:0d.2/domain0/*", NAME="{{ proxmox_tb0_interface_name }}", RUN+="/usr/sbin/ifup {{ proxmox_tb0_interface_name }}"
+SUBSYSTEM=="net", DEVPATH=="/devices/pci0000:00/*:0d.3/domain1/*", NAME="{{ proxmox_tb1_interface_name }}", RUN+="/usr/sbin/ifup {{ proxmox_tb1_interface_name }}"

@@ -1,0 +1,8 @@
+- name: Check variables
+  import_tasks: check.yml
+
+- name: Initiate proxmox nodes
+  import_tasks: init.yml
+
+- name: Setup network
+  import_tasks: network.yml

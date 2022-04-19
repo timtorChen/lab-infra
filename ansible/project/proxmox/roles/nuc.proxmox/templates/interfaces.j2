@@ -1,0 +1,35 @@
+# auto means bringing up on boot
+auto lo
+iface lo inet loopback
+
+# - wireless
+iface wlo1 inet manual
+
+# - 2.5 G ethnernet 
+iface {{ proxmox_ethernet_name }} inet manual
+
+# the virtual interface bridge to {{ proxmox_ethernet_name }}
+auto vmbr0
+iface vmbr0 inet static
+    address {{ proxmox_ethernet_address }}
+    gateway {{ proxmox_ethernet_gateway }}
+    bridge_ports {{ proxmox_ethernet_name }}
+    bridge-stp off
+    bridge-fd 0
+
+# - Thunderbolt mesh
+# thunderbolt 0 port is in the back
+allow-hotplug {{ proxmox_tb0_interface_name }}
+iface {{ proxmox_tb0_interface_name }} inet static
+    ## define self ip
+    address {{ proxmox_ceph_internal_address }}
+    ## define peer ip
+    up ip route add {{ proxmox_ceph_tb0_peer_address }} dev {{ proxmox_tb0_interface_name }}
+
+# thunderbolt 1 port is in the front
+allow-hotplug {{ proxmox_tb1_interface_name }}
+iface {{ proxmox_tb1_interface_name }} inet static
+    ## define self ip
+    address {{ proxmox_ceph_internal_address  }}
+    ## define peer ip
+    up ip route add {{ proxmox_ceph_tb1_peer_address }} dev {{ proxmox_tb1_interface_name }}

@@ -1,0 +1,9 @@
+proxmox_public_key: https://github.com/timtorchen.keys
+proxmox_install_packages:
+    - net-tools
+    - iperf3
+    - bolt
+    - mtr
+    - trash-cli
+    - vim
+    - htop

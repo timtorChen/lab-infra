@@ -1,0 +1,5 @@
+- community.general.modprobe:
+    name: "{{ item }}"
+- lineinfile:
+    path: /etc/modules
+    line: "{{ item }}"

@@ -1,0 +1,12 @@
+- name: Check 
+  assert:
+    that:
+      - "{{ item }} != None"
+    fail_msg: "{{ item }} needs to be set!"
+  loop:
+    - proxmox_ethernet_address
+    - proxmox_ethernet_mac_address
+    - proxmox_ethernet_gateway
+    - proxmox_ceph_internal_address
+    - proxmox_ceph_tb0_peer_address
+    - proxmox_ceph_tb1_peer_address

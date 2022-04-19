@@ -1,0 +1,13 @@
+proxmox_hostname: "{{ inventory_hostname }}"
+proxmox_public_key: ""
+proxmox_install_packages: []
+proxmox_reboot_enabled: false
+proxmox_ethernet_name: eth0
+proxmox_ethernet_address:
+proxmox_ethernet_mac_address:
+proxmox_ethernet_gateway: 
+proxmox_tb0_interface_name: thunderbolt0
+proxmox_tb1_interface_name: thunderbolt1
+proxmox_ceph_internal_address:
+proxmox_ceph_tb0_peer_address:
+proxmox_ceph_tb1_peer_address:
