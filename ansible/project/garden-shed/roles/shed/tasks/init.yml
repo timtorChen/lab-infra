@@ -1,0 +1,40 @@
+- name: Set hostname
+  become: "{{ shed_become }}"
+  hostname:
+    name: "{{ shed_hostname }}"
+
+- name: Set /etc/hosts
+  become: "{{ shed_become }}"
+  blockinfile:
+    path: /etc/hosts
+    marker: "# {mark} SHED ROLE MANAGED BLOCK"
+    block: |
+      127.0.0.1 {{ shed_hostname }}
+
+- name: Set timezone
+  become: "{{ shed_become }}"
+  community.general.timezone:
+    name: "{{ shed_timezone }}"
+
+- name: Set ssh public key
+  authorized_key:
+    state: present
+    user: "{{ ansible_user }}"
+    key: "{{ shed_public_key }}"
+
+- name: Harden ssh config
+  include_role:
+    apply:
+      become: "{{ shed_become }}"
+    name: devsec.hardening.ssh_hardening
+
+- name: Install packages
+  become: "{{ shed_become }}"
+  package:
+    name: "{{ shed_install_packages }}"
+
+- name: Remove packages
+  become: "{{ shed_become }}"
+  package:
+    state: absent
+    name: "{{ shed_remove_packages }}"

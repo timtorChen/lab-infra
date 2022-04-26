@@ -1,0 +1,8 @@
+#- all k3s node
+k3s_state: installed
+k3s_release_version: v1.23.4+k3s1
+k3s_become: true
+k3s_skip_env_checks: false
+k3s_skip_validation: false
+# control plane address advertised by kubevip
+k3s_registration_address: 192.168.253.10

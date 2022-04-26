@@ -1,0 +1,41 @@
+ansible_host: 192.168.253.1
+ansible_user: ubuntu
+ansible_password: ENC[AES256_GCM,data:sTPdeRY7ayM=,iv:7GTHot1+LTkkNCOfT+3ZpIMgwLxsX9xoR6wHKP5/b4U=,tag:Lg2NFaN3+dvuaruA1gh+aw==,type:str]
+ansible_become_password: ENC[AES256_GCM,data:qBVt1JF3BPZA1AxEZPSoZDrm0TYufQ==,iv:36lKTdMbA/d8OJFtQ0IXctGThdi6tP3nlgFGqeFWotw=,tag:wnV49xsmJwc9Lr9TgCAhvg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2022-04-26T07:50:49Z"
+    mac: ENC[AES256_GCM,data:UwCqMHUYvMD6yd5zucfS4fhNIOeYFXHWt8wQwxjU+jyveVbWUnE6a2JPzpzNSvRRVp6c1GR6kNFczq1kzgQSRdoXOSjMCuGqr5b2uS8TQyjJDygBO4QUjYTPUhrCaodg+kThgI2DT1KoQyvB2DIPl9hj5Jw99YzFsAKlLyDFS14=,iv:3bSTZHt8EP/J2FjTiExaock7AzflETPEK0qQcIjdsDU=,tag:WpJzSHqorhAe8rjk/V5YTQ==,type:str]
+    pgp:
+        - created_at: "2022-04-13T06:30:04Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQMOA7Xwm0UuZgqEEAwAlqOHzD1LvVXyvviFg/8Ludq7faRJoj/elfsoWa8/alNB
+            /T+NQw/h2wwidy08MFA3A3QSqvIthtV31+gw9GlGbxyEbzPd3krlCsDCMXW+9zZS
+            AHSt7ClI8nXSz5WOOwZHq+FHPvEGSxPu0F25nkLmXoB2bS9dSDdfwV33gtx9vW0m
+            CBuzNkZUPf+3wstKcjoa3umhF/fRUYNDhE8OpwJ5EIAXbpZRSq+YMkMJvXFikjFf
+            +Z8loE7qHf34+9F8iYKEQznII6OTvQ/z0lhU9sZOr4doSAvNZ0YePBGyNvwNcvjB
+            T3GUVp2hsTlTK5FDr/QNyfnrCJ1o9DgNlKU+ijYJFS+sQ61jHS8GbpddFIZv9W+V
+            ZqZARjLwStW23Lf2IpgqEehuPgKwIFDuiCxWCZjV48D4lnmV0z7fp8S1b9ZlIygh
+            228MXH2UZ1jFf0amc8jMEnIG69Cav2Ow/+6BWMzro41fjtXZ1ALnWoOIcPTiiXVj
+            pLcPHLmZc+cDlTOgseNjC/46YCzP45H8gLlIdCjqjK0xt7QLox2jocWgNdmZ4J80
+            Gg/C6A+z8n/7djvNdRx7D63HZlG3BwAsB2FCGt6L2qufd1NJHUxq44XSE+cTYnFS
+            RjZw3Nx3vyKPnMXXZb04acoLzMdgCH/jH681P2oChsAZye1rTmFTztMlh4dT5Lz4
+            SoqM82GysdacSYBbyMH6dk2jftWqdUMVwUkcSn6QKbomiMakfJo4MuB5jhkiHwjp
+            jvpXWEIktkiCmn2j+u4eXPR6vMh1anDQ55cDTYbwUwTnaLE9O8wKZ8vP10eSlULd
+            KVHLYbhBCzUc6T1dqtbMKSioaHBsnjkFbbQ2mpISd3X+pw/jXIBVnUFCspP/i0qv
+            AU/3ObGL+ONHXcWlPQxrNbYCXnEk+1NKXOVU7J+Aeuqqre4dTc+OPmMZyssNQTWN
+            6JSVrvQpml6H23P0jBzlkdoK5OCuS5r2HjoZXPFU3dDgtYnywLg+ccqKR+38bi9W
+            ET0pOHNBYowusui0RwQUmKbSXAGM3zOd3WSuXTAo+Z2NRW3/MxvzhBwS1NHVpXl2
+            sB7hZIsKJnP7ot2wDlNukrp9br6r0EMIYcvtqZTELl+H0HR4j0WrtCAC7jaRPZS9
+            wxYZ0rfEzAHsO887a3kK
+            =ikzY
+            -----END PGP MESSAGE-----
+          fp: B5F09B452E660A84
+    encrypted_regex: ([Pp]assword)
+    version: 3.7.2

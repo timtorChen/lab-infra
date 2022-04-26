@@ -1,0 +1,41 @@
+ansible_host: 192.168.253.2
+ansible_user: ubuntu
+ansible_password: ENC[AES256_GCM,data:T1Axu9qDBRo=,iv:s46AfLWKalNjhM+Up88+UWv4nvJr6HH9jjhLSshWPd8=,tag:L5kYSCTaBRZE3/NOSXWIEQ==,type:str]
+ansible_become_password: ENC[AES256_GCM,data:DjqzotK7NSYK2loypleJIsXR27dGhw==,iv:a5YTqel3OYS3+7WNvQtPe6fUJql7/Y4PaebkregXbTY=,tag:I6m56yOZUUs+NJdpltgo7g==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2022-04-26T07:50:18Z"
+    mac: ENC[AES256_GCM,data:vZymLOdrpb4f6OO3UWR4FYonaQ7LPAdzfl2cjwDJe8CKa/fjktkpsnpmLvKFvG7LQVc6DBfAiU8e2ImsI+IFc0txOb8VCXMYGspH++PoLHgPPiQAf16KlpH9I6djspaB19QJ3Ll3uu3mrbh3R5CxEyOHBtxuxfVUUt1lbgAMKFs=,iv:HY0RZ8b43lSwsiGgaukaVcdWpLjVOdoDQReDXci2kTQ=,tag:Bl/Cfiu73hG7JMUTeaQcBQ==,type:str]
+    pgp:
+        - created_at: "2022-04-13T09:35:41Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQMOA7Xwm0UuZgqEEAwAnAkyPiH93BcSzw01vnMhba9MWECzIevP92idoqa8Jb6q
+            9ymNwoFjWfZxzC39LlZOiQwS/SFhHyvVBuD0XKEZxoq9+anBAZmkZanCaswZe/wC
+            Doave1dO5m/aETVKgaB90YAcnXJg9SYk6V/fuBcqceDhEq5awSJn6NJa5TTUpbRb
+            Qf9WYYdYVtocnr7juW6emAcdYrRuKsx6aWLJOfxiMVUOca2vlqGiCNsb2Ad8QJ81
+            +Ezozl8iJwcNN9pxt09cMbDQ0ZyGg8uvj6QiCt11hng5R8pMR0NeeL2o+BSOk/pg
+            8wvlQXLj8r7trtZywHucIGBh6gL7JqBTyBqdlSfUaSyLDWN7XFTSLcNC4uKyEVzr
+            7UEUH741ONeg4UhBGuwvw8r+8OpEy7CYrVz8VqjXsyvkiVQoqln64ig0P/x20X/m
+            UfVXfaz1VdsACVDWsQkg7RJ5jCdI/NWG/EbmkVyI4lpYK3GMsua1XM1qSQ7AjTN7
+            vKHYClDSWmCfDDsRxZNAC/9BOEnD4/eByvTEtFvKpi3LDsUptkJXGvsn7KJ8JKK1
+            kn9Hz0dDUraw9UbU+BR59xIvyKSGImMLq6D2q3BhOO1SVlzTXxWDeCMA4OI0LfC+
+            IRRiOyAX8EFK76JIw41ts4rsLeIt5wFR/eanA44xJiIn3kTYdJhkaX6UsmAf6bqE
+            qdPrOa3SkWU9Oi0OO0XQqBnpVD+CVOZzVoHKggQhIDGX6+b+hPQQ4+zQXsTVrr6j
+            s5TTgX+Gy2qatSqZGvyilq9ElWF4owEpd9msysi4jce/a6b47y0Dek1YFttEUXFB
+            H2nl++5EsbtU0Azi8R7BjgzlQ12U03LW3bYWj2os0Dfdgf9xGPcy3rX93CL5qlxg
+            pu+v7bFDmVdwof6WZ33kyj4TbYdTqAJ1JBt8+kKoiWhQng809sfsjdmTSAK7LBi7
+            KgmvZMvTH/OH1naQOkV0Tr/6MzkP3EiflECJB97V5njiyryvjE5WQ7obbMatjB4Z
+            MBJTr+7zmCiVKhxs4hu0l6nSXAEvD7O4FJnrORv3/wPRxyrXx8JJZ6PLtULGcCtX
+            4egbk7RVgTr5MFwHbdFguvGRB6ORv86+0HJbHISj0oXhOLM7GP2ila3L2n9vgnGN
+            2MwRAJQiktroKBpNxT2m
+            =4C84
+            -----END PGP MESSAGE-----
+          fp: B5F09B452E660A84
+    encrypted_regex: ([Pp]assword)
+    version: 3.7.2

@@ -1,0 +1,19 @@
+#- shed
+shed_hostname: "{{ inventory_hostname }}"
+shed_public_key: "https://github.com/timtorchen.keys"
+shed_timezone: Asia/Taipei
+shed_install_packages:
+  - unattended-upgrades
+  - net-tools
+  - trash-cli
+  - nfs-common
+  - smartmontools
+  - vim
+shed_remove_packages:
+  - snapd
+
+#- ssh hardening
+ssh_server_password_login: false
+ssh_permit_root_login: 'no'
+sftp_enabled: true
+ssh_x11_forwarding: true

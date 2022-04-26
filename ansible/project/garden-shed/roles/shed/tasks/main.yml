@@ -1,0 +1,5 @@
+- name: Initiate shed nodes
+  import_tasks: init.yml
+
+- name: Setup Raspberry PI features
+  import_tasks: raspberry.yml

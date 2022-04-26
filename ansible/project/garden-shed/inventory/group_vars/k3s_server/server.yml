@@ -1,0 +1,46 @@
+#- k3s server
+k3s_control_node: true
+k3s_etcd_datastore: true
+k3s_server:
+    disable:
+        - flannel
+        - servicelb
+        - traefik
+        - metrics-server
+    disable-cloud-controller: true
+    # disalbe flannel use calico instead
+    flannel-backend: none
+    cluster-cidr: 10.42.0.0/16
+    service-cidr: 10.43.0.0/16
+    cluster-dns: 10.43.0.10
+    cluster-domain: cluster.local
+    # expose metrics
+    etcd-expose-metrics: true
+    kube-proxy-arg:
+        - metrics-bind-address=0.0.0.0
+    kube-controller-manager-arg:
+        - bind-address=0.0.0.0
+    kube-scheduler-arg:
+        - bind-address=0.0.0.0
+    # etcd snapshot in local data-dir/db/snapshots with etcd-snapshot-<unit-timestamp>
+    etcd_snapshot_name: etcd-snapshot
+    etcd_snapshot_schedule: 0 */6 * * *
+    etcd_snapshot_retention: "10"
+    
+#- extra manifests
+k3s_server_manifests_templates:
+    - ../templates/kube-vip.yml.j2
+    - ../templates/calico.yml.j2
+k3s_server_manifests_urls:
+    # TODO: add renovate
+    - url: https://docs.projectcalico.org/archive/v3.22/manifests/tigera-operator.yaml
+      filename: tigera-operator.yaml
+
+#- kube-vip
+kubevip_router_address: 192.168.248.1
+# privateAS range from 64512-65535
+kubevip_router_as: "65001"
+kubevip_advertise_address: 192.168.253.10
+
+#- calico
+calico_network_cidr: "10.42.0.0/16"

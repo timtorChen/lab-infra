@@ -1,0 +1,72 @@
+---
+- name: Fetch Raspberry Pi specified hardware information
+  command: grep -E "Raspberry Pi" /proc/device-tree/model
+  register: _device_tree
+  failed_when: false
+  changed_when: false
+
+- name: Check if hardware is Raspberry Pi
+  when: _device_tree.rc == 0
+  set_fact:
+    _is_pi: true
+
+- name: Set default facts
+  when: _is_pi|default(false)
+  set_fact:
+    _firmware_path: /boot
+
+- name: Set facts for Ubuntu
+  when: >
+    _is_pi|default(false) and 
+    ansible_distribution is match("Ubuntu")
+  set_fact:
+    _firmware_path: /boot/firmware
+
+- name: Set facts for Raspberry PI OS and Raspbain
+  when: >
+    _is_pi|default(false) and
+    ansible_distribution is match("Debian")
+  set_fact:
+    _firmware_path: /boot
+
+- name: Activating cgroup feature
+  when: _is_pi|default(false)
+  become: "{{ shed_become }}"
+  lineinfile:
+    path: "{{ _firmware_path }}/cmdline.txt"
+    regexp: '^((?!.*\bcgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory\b).*)$'
+    line: '\1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory'
+    backrefs: true
+  register: _activate_cgroup
+
+- name: Disable LEDs
+  become: "{{ shed_become }}"
+  when: >
+    _is_pi|default(false) and 
+    shed_pi_led_disabled
+  community.general.ini_file:
+    path: "{{ _firmware_path }}/config.txt"
+    section: all
+    option: dtparam
+    no_extra_spaces: yes
+    values:
+      # disable the red power LED
+      - pwr_led_trigger=none
+      - pwr_led_activelow=off
+      # disable the yellow activity LED
+      - act_led_trigger=none
+      - act_led_activelow=off
+      # disable ethernet port LEDs
+      - eth_led0=4
+      - eth_led1=4
+  register: _disable_led
+
+- name: Reboot
+  become: "{{ shed_become }}"
+  when: >
+    shed_reboot_enabled and
+    ( _activate_cgroup is changed or
+      _disable_led is changed )
+  reboot:
+    post_reboot_delay: "{{ shed_reboot_delay }}"
+  throttle: 1
