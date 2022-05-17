@@ -28,6 +28,15 @@
       become: "{{ shed_become }}"
     name: devsec.hardening.ssh_hardening
 
+- when: >
+    ansible_distribution is match("Debian") or 
+    ansible_distribution is match("Ubuntu")
+  name: Set apt repository
+  become: "{{ shed_become }}"
+  loop: "{{ shed_apt_repositories }}"
+  ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+
 - name: Install packages
   become: "{{ shed_become }}"
   package:

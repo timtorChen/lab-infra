@@ -1,40 +1,40 @@
 ansible_host: 192.168.253.1
-ansible_user: ubuntu
-ansible_password: ENC[AES256_GCM,data:sTPdeRY7ayM=,iv:7GTHot1+LTkkNCOfT+3ZpIMgwLxsX9xoR6wHKP5/b4U=,tag:Lg2NFaN3+dvuaruA1gh+aw==,type:str]
-ansible_become_password: ENC[AES256_GCM,data:qBVt1JF3BPZA1AxEZPSoZDrm0TYufQ==,iv:36lKTdMbA/d8OJFtQ0IXctGThdi6tP3nlgFGqeFWotw=,tag:wnV49xsmJwc9Lr9TgCAhvg==,type:str]
+ansible_user: pi
+ansible_password: ENC[AES256_GCM,data:dlQJ/3/olWc=,iv:FIB4Bh4v0Tn84No0KY95I+pxN1JdGIYD0x4P0qLg044=,tag:DyAKVy5cGaZnKOTqBEVVEg==,type:str]
+ansible_become_password: ENC[AES256_GCM,data:scbe5sodmqUzUFbnr8QtTL1yHzddoQ==,iv:lbpI7bPQwzMgn0gwJw9abKNKw/nJAxP+f9f783moPwI=,tag:ot9lZXyahe9GNzxRkVwjYQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-04-26T07:50:49Z"
-    mac: ENC[AES256_GCM,data:UwCqMHUYvMD6yd5zucfS4fhNIOeYFXHWt8wQwxjU+jyveVbWUnE6a2JPzpzNSvRRVp6c1GR6kNFczq1kzgQSRdoXOSjMCuGqr5b2uS8TQyjJDygBO4QUjYTPUhrCaodg+kThgI2DT1KoQyvB2DIPl9hj5Jw99YzFsAKlLyDFS14=,iv:3bSTZHt8EP/J2FjTiExaock7AzflETPEK0qQcIjdsDU=,tag:WpJzSHqorhAe8rjk/V5YTQ==,type:str]
+    lastmodified: "2022-05-17T08:41:20Z"
+    mac: ENC[AES256_GCM,data:GT7AT/D95qFg2rE1/oo9MPSsFhCg5w3DyRJLLTTHk6uQgrAXFzaxNl1zJQ4Mtt85vLMxLHtrhNbB3kaBlhiTCI+BNvZwKNkqh5OqxmIk2mceYIswh/o5ady26srXq6i7ZsHetpaojUVUJA3Ydd7HL25mfc0p2qZpOD7qsTAMdUU=,iv:bQLRzVJLShqMFZGMoVzQjjF71ec+PU57K/+A/bI+Hq0=,tag:eMnbX/hEVnjc66Ix9pCFIg==,type:str]
     pgp:
-        - created_at: "2022-04-13T06:30:04Z"
+        - created_at: "2022-05-17T08:41:18Z"
           enc: |
             -----BEGIN PGP MESSAGE-----
 
-            hQMOA7Xwm0UuZgqEEAwAlqOHzD1LvVXyvviFg/8Ludq7faRJoj/elfsoWa8/alNB
-            /T+NQw/h2wwidy08MFA3A3QSqvIthtV31+gw9GlGbxyEbzPd3krlCsDCMXW+9zZS
-            AHSt7ClI8nXSz5WOOwZHq+FHPvEGSxPu0F25nkLmXoB2bS9dSDdfwV33gtx9vW0m
-            CBuzNkZUPf+3wstKcjoa3umhF/fRUYNDhE8OpwJ5EIAXbpZRSq+YMkMJvXFikjFf
-            +Z8loE7qHf34+9F8iYKEQznII6OTvQ/z0lhU9sZOr4doSAvNZ0YePBGyNvwNcvjB
-            T3GUVp2hsTlTK5FDr/QNyfnrCJ1o9DgNlKU+ijYJFS+sQ61jHS8GbpddFIZv9W+V
-            ZqZARjLwStW23Lf2IpgqEehuPgKwIFDuiCxWCZjV48D4lnmV0z7fp8S1b9ZlIygh
-            228MXH2UZ1jFf0amc8jMEnIG69Cav2Ow/+6BWMzro41fjtXZ1ALnWoOIcPTiiXVj
-            pLcPHLmZc+cDlTOgseNjC/46YCzP45H8gLlIdCjqjK0xt7QLox2jocWgNdmZ4J80
-            Gg/C6A+z8n/7djvNdRx7D63HZlG3BwAsB2FCGt6L2qufd1NJHUxq44XSE+cTYnFS
-            RjZw3Nx3vyKPnMXXZb04acoLzMdgCH/jH681P2oChsAZye1rTmFTztMlh4dT5Lz4
-            SoqM82GysdacSYBbyMH6dk2jftWqdUMVwUkcSn6QKbomiMakfJo4MuB5jhkiHwjp
-            jvpXWEIktkiCmn2j+u4eXPR6vMh1anDQ55cDTYbwUwTnaLE9O8wKZ8vP10eSlULd
-            KVHLYbhBCzUc6T1dqtbMKSioaHBsnjkFbbQ2mpISd3X+pw/jXIBVnUFCspP/i0qv
-            AU/3ObGL+ONHXcWlPQxrNbYCXnEk+1NKXOVU7J+Aeuqqre4dTc+OPmMZyssNQTWN
-            6JSVrvQpml6H23P0jBzlkdoK5OCuS5r2HjoZXPFU3dDgtYnywLg+ccqKR+38bi9W
-            ET0pOHNBYowusui0RwQUmKbSXAGM3zOd3WSuXTAo+Z2NRW3/MxvzhBwS1NHVpXl2
-            sB7hZIsKJnP7ot2wDlNukrp9br6r0EMIYcvtqZTELl+H0HR4j0WrtCAC7jaRPZS9
-            wxYZ0rfEzAHsO887a3kK
-            =ikzY
+            hQMOA7Xwm0UuZgqEEAwAu/erzdyCGtwSlSO6IhHkzOeZZyv8q8AX/MazUyEeA+VD
+            0gjmze0JegTRcF38cQUzseO9VIBB0pZfb3USbIC8tQz4HNThAuCT+d1eEXdDKI+S
+            Vh0RazS49BZu8P1Fmutg1SY63Tc7ufRYS6pwsfrTD/kLjkpbz9P+TizRmS/OMySi
+            8QLPWOzpFCaQE4sEdYv0ttIj4Xl2nKFpJG+NpHuMGxMNyxNS2brFlb6E/VPQ3UxI
+            OXNT9E4p653pyqXWrTtHR3b9h87IJouZ0VKVhiSW0JDHdWqOoxXaVU2zq+cVAvgv
+            VCETo7LPp43UAMugjJccZH0V788Kf6P7UpER6/KyciR+EtHeynfiK/qYY1Oxy38P
+            fQpwcZLVfKFmxYX5KY1RLm9iP1z0v3/nv2E104V6QNeFQRpMKMdeCPEs3kTkhpPs
+            hrM2YpBdf0qzBbtDYs0JDu/ReKtY/y2LG6dVuKFbs4Jd750cSB6Yfuj5BZt5rUR8
+            B2DQlwyHENCDklqriWG1DACiJoAKivG3PNWs8NQu6Jdk5E3KwX3G6pNWJXgZoU8a
+            Qf1YCRXblesa79ncdNWTr1ckapcx6mBvDixM03Zhvh6H4p5kvwLomFvjl/Wo3i8s
+            VH4f/yKzz6XUC2v9unn2s2tsZqTQ5dwyjq/vs+WQTWq+nOImDqDDop4OB4E1Obvy
+            LeKKabDqhRWlT2DqvZLNif4OsOOcW6eYsWMdi2nRuSVVLersxdugm5XhYC9jlBTv
+            WoXkZxaXIeJvNWYqm61rR24vqieSF8CF+ZnTW0J1uf4hAe9yzDQ/sumK006KqgPx
+            gTh38MtopzNQqSP469VcFtJOOBcVEMMgWPPGJxxV6GVuvALQhtgebyWbh1N4Flqq
+            +iA85vSLuOehmBeLpN7BU4YMiEdLN5hq5u1SvpY/UiqytqUcy1f9H3niTP8gG5c0
+            VT7udxezIzQ/SZd2sIP0qPdTghsTgmmeVspECaadA0mJgqVrUnnzibMvstCovBZt
+            Cor049uJXPMK7gT2TIp6yk/SXAHVLD8jPuWOdxpW2hRpB9r92U3zDcFuYIILIZG5
+            0we1lCEFeqm2DCMFI3Eu7zwcyDqhazoHD+5sUpYBijzEK3Cr2S/c5lwB1up/PSso
+            g/A51Wts8borN3cAByRG
+            =hQ+s
             -----END PGP MESSAGE-----
           fp: B5F09B452E660A84
     encrypted_regex: ([Pp]assword)

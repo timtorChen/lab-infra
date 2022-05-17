@@ -2,6 +2,7 @@ shed_become: true
 shed_hostname: "{{ inventory_hostname }}"
 shed_timezone: UTC
 shed_public_key: ""
+shed_apt_repositories: []
 shed_install_packages: []
 shed_remove_packages: []
 shed_reboot_enabled: true

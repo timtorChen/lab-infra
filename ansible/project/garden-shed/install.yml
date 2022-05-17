@@ -3,6 +3,12 @@
   roles:
     - name: shed
 
+- hosts: zfs
+  tags: [zfs]
+  roles:
+    - become: true
+      role: mrlesmithjr.zfs
+
 - hosts: all
   tags: [k3s]
   roles:

@@ -3,6 +3,8 @@ roles:
     version: v3.1.1
   - name: lae.proxmox
     version: v1.7.0
+  - name: mrlesmithjr.zfs
+    version: master
     
 collections:
   - name: community.general

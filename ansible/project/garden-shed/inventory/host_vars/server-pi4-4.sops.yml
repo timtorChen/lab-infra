@@ -1,0 +1,72 @@
+# -- host
+ansible_host: 192.168.253.4
+ansible_user: pi
+ansible_password: ENC[AES256_GCM,data:23cNaPfRGWg=,iv:YkCDZix7U3oV+zfnbI3XQOGbu8bjpto/mvQjRGRfwzk=,tag:OHaiByV5FH4s+zC03XssfQ==,type:str]
+ansible_become_password: ENC[AES256_GCM,data:9VxP4/IM1TmJ37zgOIyEy0UibOwf2Q==,iv:XQ2umqpibyio1cREu+GWuMX2IpBvq5ooitlWSuJ8JWM=,tag:GvndDVC9kirImjzVyV5yMw==,type:str]
+# -- zfs
+zfs_install_update: false
+zfs_create_pools: true
+zfs_create_filesystems: true
+zfs_manage_filesystem_permissions: true
+zfs_pools:
+    - name: hdd-pool
+      action: create
+      compression: lz4
+      devices:
+        - ata-ST4000VN008-2DR166_ZDH95W58
+        - ata-ST4000VN008-2DR166_ZDH93J1E
+      type: mirror
+      state: present
+zfs_filesystems:
+    - name: nfs
+      pool: hdd-pool
+      quota: 2T
+      mountpoint: /hdd-pool/nfs
+      sharenfs: no_subtree_check,all_squash,rw=@192.168.0.0/16
+      owner: nobody
+      group: nogroup
+      state: present
+    - name: k8s-storage
+      pool: hdd-pool
+      quota: 1T
+      mountpoint: /hdd-pool/k8s-storage
+      owner: pi
+      group: pi
+      state: present
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2022-05-17T09:39:43Z"
+    mac: ENC[AES256_GCM,data:pPtIK4LZSvTlEAq6MPPiAnauqa9HkX5LUUIi/8vO1igGuQShFqoJxGgrLRKLvrnGbUKBjsWSi4PsQ9VvxXxLKEoTNLqOUxXa3heCfjYd3LQtGHL92RwGWdse/2jN9uqnT27gYWiTpNYhrE1CO0KE5T3k/UlVq7udjzCKm2J4i3Q=,iv:Z/BSEdDNKt/Cq9GQkF2OBFnBwxMN3VEgjPTHiUTFo3o=,tag:wkdmxATnfxoje0nqeErOzw==,type:str]
+    pgp:
+        - created_at: "2022-05-17T09:39:42Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQMOA7Xwm0UuZgqEEAv/UmAsJ69VKkMeXIoHj3QjlY+TIrlKj1G7gN0ClpQgV5ZW
+            xhPeOWnFyHImJKWSZNvEvZ2VC1LXDjf9nBRzFNDmDtTOjmWIeUt60aiDDzMyS3zQ
+            7N8whBAnq3/ihTtngbQezK9WrHPboKiz5RWXJK9mO8QsMYIGcglN7x1VW5asc5IE
+            SCquS0CikGwyzL79OPrArZHgsXErUCRq+oUfE2JfxoK+burCvYDcSVMFdEn/b5Yt
+            fBb9GeTUUWCkl4nfTIJsrHM7tO0hnAw4rgMeYHQW+W5PZxhN+CAtaiINClTgAJmr
+            wr2ctZCGNtWNnN7yEdD6YBjc2irlmIY6VFW4fPPb9Vg4RjgH2yh2V3MXKPPeO6+O
+            c3QzRZgIQhICUgpdHqciemUNEIzGdmGstJHqDn2VhWb8YRRXtOlc583+SYfE633M
+            NrNduFLVwEYpCkCo32wB8DavBcTwUtX+i44aB2+OpSmyALZKMRFisEitTCtvHA0z
+            DqWniusterR+ulgPWJtyDACQBX4ytvBJ1wpD+TZxaEMrf5lVzAX/5MDAYVRl2/4t
+            8FVW0i4cmzweKx337fVxueT2uaoJBTfpAKGazHtgYV/ds+JyCUQypldUZomUp0DF
+            AT2+BZx/ZgtJhUyVfvGOYQ+xr/oaj3y1yWidyLqXGgYUrlbKdM+OsvF1mVS4O8NX
+            Y7hen9pU/bTNB7torX//sME3mB/7VHSHvVerbIPFSLmPdlwlRf2XqrWmt+mFQ4M0
+            kSs865MlGA8Ck3oM0OeKCU1pRStGHLpMgNTPOxJkQyubVhIRiodeKQtTrsdccPxL
+            Eq9xDL/674hVFCj/Pva2xKiYnKvUpSCpzAAGUJgH51Mjs+Ck3WpJqb+T1FZbgwlN
+            hHjUfJV7htmvyoptBBjWBjfToLsoAFGqE54IJ+2/ryBYrx3z82rOPE/kPtWclUi4
+            j7SSsdro9EcxDJ+XGuFOlD7on298aiZX2T61jj0oNOuFwjWbEQueSSCTDFxEnwyJ
+            xXtKAP5bkxviZ3PceccBv9fSXgE3lr+5sDudiIXMgtbG/BC8cxKS7Uz40DflMWVG
+            DLNkYeIoJC9+/YGD/NBgtWXvmUkI7ukXUNumQ4LnbPdQrsy1SbkkudOTvzXOyCuJ
+            IO4RkulF+tmiOLqdaEf88Qw=
+            =W/iv
+            -----END PGP MESSAGE-----
+          fp: B5F09B452E660A84
+    encrypted_regex: ([Pp]assword)
+    version: 3.7.2
