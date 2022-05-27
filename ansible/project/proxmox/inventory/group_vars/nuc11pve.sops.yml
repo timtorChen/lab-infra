@@ -24,11 +24,13 @@ pve_roles:
         - VM.PowerMgmt
         - Datastore.AllocateSpace
         - Datastore.Audit
+        - Sys.Audit
+        - Sys.Console
 pve_users:
     - name: tf-prov@pve
-      password: ENC[AES256_GCM,data:a33Rk+Uq8Ay+RAO602cHHw==,iv:BCWG6yOZr/i7Fprcw+6Yd49JJhXHQJuTBOygG2w5ZEs=,tag:/SQQqibl96ct2cWVjMmYzA==,type:str]
+      password: ENC[AES256_GCM,data:bv3GU9UbrcElVMHjWi+pow==,iv:P/z1eFlvTGg7qMce3G/C4nERCrDfHVz+EzY3ML+piaM=,tag:p+qr5DBOjgtVAAIQEtM6Bw==,type:str]
     - name: k8s-exporter@pve
-      password: ENC[AES256_GCM,data:6EjwDYCPXiZUbCjsQvjrwT5VjVaV,iv:8jcEmtQO+d0aEPM5kQPwD/NfN0yFzqz2nl43wUU8Wrc=,tag:VYoDs5cEv9D3KtCVGfyfDA==,type:str]
+      password: ENC[AES256_GCM,data:M38F65doU8fV2+5cNwsdjQwWUvID,iv:Syo7m1DyjiXQCvyshuz7u4mNL8M8kByyid8g6W8aKU4=,tag:cMg4EWhb9fbx8mj0rZWXPw==,type:str]
 pve_acls:
     - path: /
       roles:
@@ -89,33 +91,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-05-09T09:41:15Z"
-    mac: ENC[AES256_GCM,data:eZNSH+dqf7ZOf8tVKGoQLp+13Bc0CvoRPeEy00v5hhofS34N+oG+7dQKtUNybRsMKLjozdQRqrzpA4eVbu1bckbUhgyXIuebCv6pRDbZygmGR9JPkFRlX9Y6ytiCogcmt0l78Q4qW75dAxArVm0k20Imi87r1UpNg++st1PM4Ck=,iv:Z+40d2hW0NGouI+/8LUs7p0Qpg2V7NINpogz9mPtuAE=,tag:e4LSip1AiCXzMAijWYnUXQ==,type:str]
+    lastmodified: "2022-05-17T17:33:28Z"
+    mac: ENC[AES256_GCM,data:w1lmwCkcWoJYVLotCgg7r2INFf1LD8WK9NTGSYYKn6KOrddGPOKS/inl7Nl/ivMKrJ8LUg+mS2bRoub5gQZdL+uSRIhwOUytJlXtkqXMlB6KcghszFcaYxX57yVYAycwhHdTG2vIS3L5qHfC/UrcNzZ+vE81SC5Q0HM3FG6Am14=,iv:CHHC8bpK5cCLMAFBji5BCL8BzD4BK/fqKyYlwxGBwhE=,tag:ZIUXUvT4R51/Ru2UJUoANQ==,type:str]
     pgp:
-        - created_at: "2022-05-09T09:36:06Z"
+        - created_at: "2022-05-17T17:33:27Z"
           enc: |
             -----BEGIN PGP MESSAGE-----
 
-            hQMOA7Xwm0UuZgqEEAv/RAtKHKG9YkNnQpKIKAAxq9aByE/6roLz+tsP7AczqZfs
-            8vMvXsEpLpI54fv2kbjDhk+P+8Y6i4eKM6U3tbPsm9aN2jSRN4T/hvX43l+M2B0S
-            L1kYrUb5XlB4ckX4VyxgU03w5C8fi8C+W5buefl8Yb++Webwmbztao5zueERmV+w
-            tw4yrOKeRnzzJoa9/QN5DxRH/lv+jhx8gVVD93TcxQFYigUE9POudh9Ffq76UsZX
-            SeYn+W1qCF+iH+aeZUW5ScXC9ReaVqtDOgoeHSWMvl6Myap9yjXNFif9eCLt3Puk
-            g2Xle09MZzeI2l5EeEwasG+Ugnt8oUse+nZZ4ZiX3/JmnlxsQAj+Tg+ugS25NcsH
-            VVxPU8z0Q9ISFVhHEa0y/8E64Jc5zTcZ0XBKuh3eMdVJ7/HrSk/GbiWcf8ZatUKg
-            ChUE2drVIPJ6k3O3sqNJEFoAP7RNXzp88knx9ocSN1S1tORHk+s+7HirJ+EN/KoE
-            uCooWXlmgaERPHAFP8f6DACF9JYIRFC3F8AZU4q5ZsH5X4gM/9L3Bz06OnWDqy7A
-            knunx1YtNnxRjvzItLS9syFAFSWFa7Bgasz2iI3gcZ9EPF7FyfG3MGnDLIovZhRs
-            6PseRi64wXZj+PTHus7/azYnUlOoJDvwzjFBga0Nnx+VVjHqeML+/LiCL14a9b9W
-            cRoXHQsuMT3lugcYkbFsF7kTWOQfblw5VFcnfToz6ld0mO1PugsMiqU3Z6FfGIJf
-            Cjl4ZQycXGfmkbTHmjzEYAdR2GCQRWzZzqZfdVDT0NeRbEZqiqPqTI7UxmaxZG9+
-            A7TZIcAFHOYGcW7/HKj6heB4cbra0ByJ2y1YqaTP5ofFMNLHz6AcXWDYH2dWlXPp
-            8ajS/8u6/TKh5vodlGaspbQC3nQy4Jfmmd/4jHRB99fVjaLMBAmnI4EHYMzY1aNF
-            xDj6z1ogEWSFwcCA5vsbsi5zQTKj2UkG5amkqyfSUIwh5fNvWr7qlrPVSZBVykHC
-            na5ofA5bvA/7kLgA4cSe07vSXAET0DOYjlew6lVIzE1IFwM6pv4R9mwhAFH4ZaZ8
-            bn9Aj+Hj1UluoaOeUTU+g8MbxMqjvTAV/B9YEowXc8OtfN5J/Hjie8ej+/WGPsJd
-            gFTSkws3dB7k6X4A5lFS
-            =MPUU
+            hQMOA7Xwm0UuZgqEEAwAjkQxgg/e7GqYxElRzMgRmWGinDEyVUEAXiwMryuYe4uN
+            miyQ50tkRudufzN4bhIAZj1gXc4Z9RWnGVRxEXqXIKQt0jkhUcdMZKjeOSC7MdBQ
+            VkTo5pDjfd1+DU/99Fo1rtY657vFMWlGbGpzOSUm4/eg5nTru9nXg/ASDyMUXYVL
+            fV6ze3A5htZWkZq2GzNRlEvE1ZrvEn6M8320DOuGW8NZSxktqEIVb2ywzAAsAbXc
+            haOinMLKQcSwztvsRH4Sa/Z3eE47zNewtMIPYN1oktAZvVvinvTBJ0ljKICSAS/T
+            vnoiKEszv6ej/ZQNfeQra1t86onN6E9rslNlNivmfjbOt3Lj8fjKgb3JRfwAs8z5
+            EpM5DeBQfewsElSnkbRTEeOWFgxBbPrkCPJvsPoj4OPfmRx/sBRfXw1o/ePfo+Qs
+            iiQwEgm+9sKa3iR+P28SBZYmKTZ6BTmaE4HD9h3hMK4V16zrAlMvnJq3xBWojtIq
+            LjyztimxbY7SQKEA81/XC/90Ci80oMrnux6RHCeJauZvx3ycsZGXPFOCdbPHa7Cw
+            XX2vdLnpl85x5c9zNAuajoNvzeW+x8KBJVjKd36cKiqXKfj8t9YBsOZ/+k+FgBbk
+            0A3G5OWMNjezNKthchq+NpjaBL6naJtMNaoWKCt/j3+WqIvDGrvx8ZCYCvcIp61h
+            HnzOGWHJBz1QGFz9nyjIu0PCO2wrAWcd5tgjWqpR3fx1J8fDDZpzq2NK8wQ/dJM2
+            9CdOmtl1ksbEkDp+C4kl6VjIR+Iwwn/46bG3wJOqrShALGuHXLE2rzeRBfnmo3dw
+            Fr5jcCXG3fXIAaQM/wDtkqqniB+Wv5yx84+C2CnvL1HrrlRcLJ96k3129svjTiFr
+            zYMNNzivtYAFYN7KiqbsPrURmXT9S+vuQbw6Im78EjxYjmRHu01S3mE9kKe/wDBF
+            5Up6yJIRTz4ei+IuBgUhbHO3RXBJvg+OxzTGCthHmIC7f1SeguJaAsZaj8LGbjHd
+            oGM59iX2bwibcA3tnBW9G9fSXgFMWzLd1HapVmVhyBwjySm2lVxXeVPM6A8H7A1p
+            DW6OYVoB1btuuH66iaQsvxD8H0hgJuBQaFvHUf1haYq3x1qzplXPVbzHlgNKoq4T
+            h/p+8yBAaEkY7EyOZkfhM6I=
+            =VADP
             -----END PGP MESSAGE-----
           fp: B5F09B452E660A84
     encrypted_regex: ([Pp]assword)
