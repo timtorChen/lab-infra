@@ -6,7 +6,6 @@ k3s_server:
         - flannel
         - servicelb
         - traefik
-        - metrics-server
     disable-cloud-controller: true
     # disalbe flannel use calico instead
     flannel-backend: none
