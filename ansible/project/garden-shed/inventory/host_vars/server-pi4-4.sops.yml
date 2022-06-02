@@ -18,20 +18,21 @@ zfs_pools:
       type: mirror
       state: present
 zfs_filesystems:
-    - name: nfs
+    - name: garden
       pool: hdd-pool
-      quota: 2T
-      mountpoint: /hdd-pool/nfs
-      sharenfs: no_subtree_check,all_squash,rw=@192.168.0.0/16
+      quota: 1T
+      mountpoint: /hdd-pool/garden
+      sharenfs: no_subtree_check,all_squash,rw=@192.168.255.0/24
       owner: nobody
       group: nogroup
       state: present
-    - name: k8s-storage
+    - name: shed
       pool: hdd-pool
-      quota: 1T
-      mountpoint: /hdd-pool/k8s-storage
-      owner: pi
-      group: pi
+      quota: 2T
+      mountpoint: /hdd-pool/shed
+      sharenfs: no_subtree_check,all_squash,rw=@192.168.253.0/24
+      owner: nobody
+      group: nogroup
       state: present
 sops:
     kms: []
@@ -39,8 +40,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-05-17T09:39:43Z"
-    mac: ENC[AES256_GCM,data:pPtIK4LZSvTlEAq6MPPiAnauqa9HkX5LUUIi/8vO1igGuQShFqoJxGgrLRKLvrnGbUKBjsWSi4PsQ9VvxXxLKEoTNLqOUxXa3heCfjYd3LQtGHL92RwGWdse/2jN9uqnT27gYWiTpNYhrE1CO0KE5T3k/UlVq7udjzCKm2J4i3Q=,iv:Z/BSEdDNKt/Cq9GQkF2OBFnBwxMN3VEgjPTHiUTFo3o=,tag:wkdmxATnfxoje0nqeErOzw==,type:str]
+    lastmodified: "2022-05-31T08:57:42Z"
+    mac: ENC[AES256_GCM,data:4vQGcac3AIhK/jYMMpF8vl02EVJ8u1lEctJ+3/3pDBii2wyHbsDNALznKFFeuilmSpuroqdNjpIsuG0Lid/vkNkZ0ruF6fn8bcd1oVhEDl1nI2omEg1tH5oyjAhGWu4H4mU5HfaQ7uk/W+Y5W0+W2HyoNPaNJ3SBXiIbvqfyObI=,iv:UifIkOUcjCjlS3kG1eYu5qQ/m9uyWRPrkDUV3U1TQ9M=,tag:cdQiOj/oLt23u43tkWbEYQ==,type:str]
     pgp:
         - created_at: "2022-05-17T09:39:42Z"
           enc: |
@@ -69,4 +70,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: B5F09B452E660A84
     encrypted_regex: ([Pp]assword)
-    version: 3.7.2
+    version: 3.7.3
