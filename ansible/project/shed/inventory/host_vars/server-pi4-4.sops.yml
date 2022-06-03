@@ -1,6 +1,6 @@
 # -- host
 ansible_host: 192.168.253.4
-ansible_user: pi
+ansible_user: ubuntu
 ansible_password: ENC[AES256_GCM,data:23cNaPfRGWg=,iv:YkCDZix7U3oV+zfnbI3XQOGbu8bjpto/mvQjRGRfwzk=,tag:OHaiByV5FH4s+zC03XssfQ==,type:str]
 ansible_become_password: ENC[AES256_GCM,data:9VxP4/IM1TmJ37zgOIyEy0UibOwf2Q==,iv:XQ2umqpibyio1cREu+GWuMX2IpBvq5ooitlWSuJ8JWM=,tag:GvndDVC9kirImjzVyV5yMw==,type:str]
 # -- zfs
@@ -40,8 +40,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-05-31T08:57:42Z"
-    mac: ENC[AES256_GCM,data:4vQGcac3AIhK/jYMMpF8vl02EVJ8u1lEctJ+3/3pDBii2wyHbsDNALznKFFeuilmSpuroqdNjpIsuG0Lid/vkNkZ0ruF6fn8bcd1oVhEDl1nI2omEg1tH5oyjAhGWu4H4mU5HfaQ7uk/W+Y5W0+W2HyoNPaNJ3SBXiIbvqfyObI=,iv:UifIkOUcjCjlS3kG1eYu5qQ/m9uyWRPrkDUV3U1TQ9M=,tag:cdQiOj/oLt23u43tkWbEYQ==,type:str]
+    lastmodified: "2022-06-03T07:57:59Z"
+    mac: ENC[AES256_GCM,data:in5DNFULa/6wKzKumJcyPj/OvWOKwnu89G8RyCC8ceySIfvrH0x16qiBMDTdTGy1IPPHfmKF1IeZnNNRZmKwiON+gLlr8nbYskIw7V1wtgRTK/wJB+nXy0NN06IocqOaNj3PVyKL00H71jA0BaPg1eIotmNpOL9fusiLyzPyELQ=,iv:LQgGzPGuOqUDuwGYbWNSQToJ/X3cHGijQlLH0U4m8cw=,tag:3pbJ7oCxRVh/SiRcgx4Biw==,type:str]
     pgp:
         - created_at: "2022-05-17T09:39:42Z"
           enc: |

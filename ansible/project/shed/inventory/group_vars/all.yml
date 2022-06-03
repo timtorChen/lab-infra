@@ -2,9 +2,7 @@
 shed_hostname: "{{ inventory_hostname }}"
 shed_public_key: "https://github.com/timtorchen.keys"
 shed_timezone: Asia/Taipei
-shed_apt_repositories:
-    - deb http://deb.debian.org/debian bullseye-backports main contrib non-free
-    - deb-src http://deb.debian.org/debian bullseye-backports main contrib non-free
+shed_apt_repositories: []
 shed_install_packages:
   - unattended-upgrades
   - net-tools
@@ -12,15 +10,14 @@ shed_install_packages:
   - nfs-common
   - smartmontools
   - vim
-  # ZFS packages
-  - raspberrypi-kernel-headers
-  - zfs-dkms=2.1.4-1~bpo11+1
-  - libnvpair3linux=2.1.4-1~bpo11+1
-  - libuutil3linux=2.1.4-1~bpo11+1
-  - libzfs4linux=2.1.4-1~bpo11+1
-  - zfsutils-linux=2.1.4-1~bpo11+1
-  - zfs-zed=2.1.4-1~bpo11+1
-shed_remove_packages: []
+  # zfs package
+  - zfsutils-linux
+  - nfs-kernel-server
+  # workaround for Ubuntu 22.04 calico panic
+  # https://github.com/projectcalico/calico/issues/5410
+  - linux-modules-extra-raspi
+shed_remove_packages:
+  - snapd
 # -- ssh hardening
 ssh_server_password_login: false
 ssh_permit_root_login: 'no'

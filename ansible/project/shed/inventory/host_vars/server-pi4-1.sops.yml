@@ -1,5 +1,5 @@
 ansible_host: 192.168.253.1
-ansible_user: pi
+ansible_user: ubuntu
 ansible_password: ENC[AES256_GCM,data:dlQJ/3/olWc=,iv:FIB4Bh4v0Tn84No0KY95I+pxN1JdGIYD0x4P0qLg044=,tag:DyAKVy5cGaZnKOTqBEVVEg==,type:str]
 ansible_become_password: ENC[AES256_GCM,data:scbe5sodmqUzUFbnr8QtTL1yHzddoQ==,iv:lbpI7bPQwzMgn0gwJw9abKNKw/nJAxP+f9f783moPwI=,tag:ot9lZXyahe9GNzxRkVwjYQ==,type:str]
 sops:
@@ -8,8 +8,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-05-17T08:41:20Z"
-    mac: ENC[AES256_GCM,data:GT7AT/D95qFg2rE1/oo9MPSsFhCg5w3DyRJLLTTHk6uQgrAXFzaxNl1zJQ4Mtt85vLMxLHtrhNbB3kaBlhiTCI+BNvZwKNkqh5OqxmIk2mceYIswh/o5ady26srXq6i7ZsHetpaojUVUJA3Ydd7HL25mfc0p2qZpOD7qsTAMdUU=,iv:bQLRzVJLShqMFZGMoVzQjjF71ec+PU57K/+A/bI+Hq0=,tag:eMnbX/hEVnjc66Ix9pCFIg==,type:str]
+    lastmodified: "2022-06-03T07:00:59Z"
+    mac: ENC[AES256_GCM,data:xdyuy/T6Ivk6izK0oN6gUMsBBa4E/XDvbIA9p9yZZnxK7KrwH2eK6rYPDhkAE2qLQbkSe06SNJtIO1YcacPBNNhhhhrMR9dBNRi0ft6/icC9wKNE7Qn21H89Dbwkx9BXjT/LYNgbm77Abge53wsW4So8zKZSQsDMi/qn0+SHMUo=,iv:iJ3WJYbZb+Jj7lWipv3n/cce/RM5u9YCt+D0eSCVoVI=,tag:bGbG+TXY+ED7pUwlAyuR2w==,type:str]
     pgp:
         - created_at: "2022-05-17T08:41:18Z"
           enc: |
@@ -38,4 +38,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: B5F09B452E660A84
     encrypted_regex: ([Pp]assword)
-    version: 3.7.2
+    version: 3.7.3
