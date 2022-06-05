@@ -18,6 +18,11 @@ shed_install_packages:
   - linux-modules-extra-raspi
 shed_remove_packages:
   - snapd
+  - modemmanager
+  - packagekit
+  - multipath-tools
+  - wpa_supplicant
+  - bluez
 # -- ssh hardening
 ssh_server_password_login: false
 ssh_permit_root_login: 'no'
