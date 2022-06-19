@@ -1,0 +1,32 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  namespace: kube-system
+  name: coredns-scaler
+spec:
+  interval: 1h
+  chart:
+    spec:
+      sourceRef:
+        kind: HelmRepository
+        namespace: flux-system
+        name: cluster-proportional-autoscaler
+      version: 1.0.0
+      # renovate: registryUrl=https://kubernetes-sigs.github.io/cluster-proportional-autoscaler
+      chart: cluster-proportional-autoscaler
+  values:
+    options:
+      namespace: kube-system
+      target: deployment/coredns
+    config:
+      linear:
+        min: 1
+        max: 2
+        nodesPerReplica: 1
+        preventSinglePointFailure: true
+        includeUnschedulableNodes: false
+    resources:
+      limits:
+        cpu: 10m
+        memory: 16Mi

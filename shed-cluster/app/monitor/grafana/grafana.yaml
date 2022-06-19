@@ -1,0 +1,134 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  namespace: monitor
+  name: grafana
+spec:
+  chart:
+    spec:
+      sourceRef:
+        kind: HelmRepository
+        namespace: flux-system
+        name: grafana
+      # renovate: registryUrl=https://grafana.github.io/helm-charts
+      chart: grafana
+      version: 6.29.5
+  interval: 1h
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8, 192.168.0.0/16"
+      hosts:
+        - grafana.${ROOT_DOMAIN}
+
+    replicas: 2
+
+    deploymentStrategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 1
+        maxSurge: 1
+
+    affinity:
+      podAntiAffinity:
+        # do not put pod to the same node
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                    - grafana
+            topologyKey: kubernetes.io/hostname
+
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+
+    persistence:
+      enabled: true
+      existingClaim: grafana-data
+
+    admin:
+      existingSecret: grafana-secret
+      userKey: admin-user
+      passwordKey: admin-password
+
+    grafana.ini:
+      auth.anonymous:
+        enabled: false
+      live:
+        allowed_origins: https://grafana.${ROOT_DOMAIN}
+      # adguard DNS blocks this creating a lot of error log
+      analytics:
+        reporting_enabled: false
+
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+          - name: shed
+            orgId: 1
+            folder: ""
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/shed
+
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: shed-mimir
+            type: prometheus
+            editable: true
+            url: http://mimir-query-frontend:8080/prometheus
+            access: proxy
+            jsonData:
+              httpHeaderName1: X-Scope-OrgID
+            secureJsonData:
+              httpHeaderValue1: shed
+
+          - name: shed-loki
+            type: loki
+            editable: true
+            url: http://loki-read:3100
+            access: proxy
+            jsonData:
+              httpHeaderName1: X-Scope-OrgID
+            secureJsonData:
+              httpHeaderValue1: shed
+
+          - name: shed-prom
+            type: prometheus
+            editable: true
+            url: http://kube-prometheus-stack-prometheus:9090
+            access: proxy
+
+    dashboards:
+      shed:
+        ceph-pool:
+          gnetId: 5342
+          revision: 5
+          datasource: shed-mimir
+        ceph-cluster:
+          gnetId: 2842
+          revision: 14
+          datasource: shed-mimir
+        ceph-osd:
+          gnetId: 5336
+          revision: 5
+          datasource: shed-mimir
+        zfs:
+          gnetId: 7845
+          revision: 4
+          datasource: shed-mimir
+        ingress-nginx:
+          gnetId: 9614
+          revsion: 1
+          datasource: shed-mimir

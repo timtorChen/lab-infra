@@ -1,0 +1,54 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  namespace: monitor
+  name: loki-read
+spec:
+  namespaceSelector:
+    matchNames:
+      - monitor
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: read
+      app.kubernetes.io/instance: loki
+    # do not scrape on headless service
+    matchExpressions:
+      - key: prometheus.io/service-monitor
+        operator: NotIn
+        values:
+          - "false"
+  # 551 metrics/endpoint
+  endpoints:
+    - port: http-metrics
+      metricRelabelings:
+        - sourceLabels: [__name__]
+          regex: ^(loki).*
+          action: keep
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  namespace: monitor
+  name: loki-write
+spec:
+  namespaceSelector:
+    matchNames:
+      - monitor
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: write
+      app.kubernetes.io/instance: loki
+    # do not scrape on headless service
+    matchExpressions:
+      - key: prometheus.io/service-monitor
+        operator: NotIn
+        values:
+          - "false"
+  # 431 metrics/endpoint
+  endpoints:
+    - port: http-metrics
+      metricRelabelings:
+        - sourceLabels: [__name__]
+          regex: ^(loki).*
+          action: keep

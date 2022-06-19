@@ -1,0 +1,74 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  namespace: minio
+  name: minio
+spec:
+  chart:
+    spec:
+      sourceRef:
+        kind: HelmRepository
+        namespace: flux-system
+        name: minio
+      # renovate: registryUrl=https://charts.min.io/
+      chart: minio
+      version: 4.0.2
+  interval: 1h
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/proxy-body-size: 50m  # default to 1m
+        nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8, 192.168.0.0/16"
+      hosts:
+        - s3.${ROOT_DOMAIN}
+    consoleIngress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8, 192.168.0.0/16"
+      hosts:
+        - minio.${ROOT_DOMAIN}
+
+    mode: standalone
+
+    environment:
+      # check the envs:
+      # https://docs.min.io/minio/baremetal/reference/minio-server/minio-server.html
+      MINIO_BROWSER_REDIRECT_URL: https://minio.${ROOT_DOMAIN}
+
+    persistence:
+      enabled: true
+      existingClaim: minio-data
+
+    resources:
+      limits:
+        cpu: 500m
+        memory: 1Gi
+      requests:
+        cpu: 200m
+        memory: 512Mi
+
+    existingSecret: minio-secret
+
+    metrics:
+      serviceMonitor:
+        enabled: false
+
+    users: []
+    buckets: []
+    policies: []
+
+    affinity:
+      nodeAffinity:
+        # prefer on nfs node server-pi4-4
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - server-pi4-4

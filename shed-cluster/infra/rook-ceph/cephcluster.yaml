@@ -1,0 +1,78 @@
+---
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+metadata:
+  namespace: rook-ceph
+  name: rook-ceph
+spec:
+  cephVersion:
+    image: quay.io/ceph/ceph:v16.2.7
+  dataDirHostPath: /ceph
+  mon:
+    count: 3
+    allowMultiplePerNode: false
+  mgr:
+    count: 2
+    modules:
+      - name: pg_autoscaler
+        enabled: true
+  dashboard:
+    enabled: true
+    ssl: true
+  monitoring:
+    enabled: false
+  removeOSDsIfOutAndSafeToRemove: true
+  storage:
+    useAllNodes: false
+    useAllDevices: false
+    nodes:
+    - name: "server-pi4-1"
+      devices:
+      - name: /dev/disk/by-id/scsi-SASMT_2115_00000000000000000000-part3
+        config:
+          deviceClass: ssd
+    - name: "server-pi4-2"
+      devices:
+      - name: /dev/disk/by-id/scsi-SASMT_2115_00000000000000000000-part3
+        config:
+          deviceClass: ssd
+    - name: "server-pi4-3"
+      devices:
+      - name: /dev/disk/by-id/scsi-SASMT_2115_00000000000000000000-part3
+        config:
+          deviceClass: ssd
+  resources:
+    mon:
+      requests:
+        memory: 1Gi
+    mgr:
+      requests:
+        memory: 512Mi
+    osd:
+      requests: 
+        memory: 1Gi  # 2Gi in documentation
+    crashcollector:
+      requests:
+        memory: 60Mi
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rook-ceph-dashboard
+  namespace: rook-ceph
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8, 192.168.0.0/16"
+spec:
+  rules:
+  - host: ceph.${ROOT_DOMAIN}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: rook-ceph-mgr-dashboard
+            port:
+              name: https-dashboard

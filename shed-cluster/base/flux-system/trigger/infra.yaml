@@ -1,0 +1,24 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  namespace: flux-system
+  name: infra
+spec:
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./shed-cluster/infra
+  interval: 10m0s
+  prune: false
+  dependsOn:
+    - name: crd
+    - name: source
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-config
+  decryption:
+    provider: sops
+    secretRef:
+      name: gpg-secret

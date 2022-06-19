@@ -1,0 +1,150 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  namespace: monitor
+  name: kube-prometheus-stack
+spec:
+  chart:
+    spec:
+      sourceRef:
+        kind: HelmRepository
+        namespace: flux-system
+        name: prometheus-community
+      # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
+      version: 35.4.2
+  interval: 1h
+  values:
+    # -- Charts
+    # No grafana
+    grafana:
+      enabled: false
+
+    # Prometheus operator controller
+    prometheusOperator:
+      enabled: true
+      serviceMonitor:
+        selfMonitor: true
+        metricRelabelings:
+          - sourceLabels: [__name__]
+            regex: ^(go|process).*
+            action: drop
+
+    # prometheus-kube-state-metrics
+    kubeStateMetrics:
+      enabled: true
+    kube-state-metrics:
+      prometheus:
+        monitor:
+          enabled: false
+          interval: 1m
+      resources: {}
+
+    # prometheus-node-exporter
+    nodeExporter:
+      enabled: true
+    prometheus-node-exporter:
+      prometheus:
+        monitor:
+          enabled: false
+          interval: 1m
+          metricRelabelings:
+            - sourceLabels: [__name__]
+              regex: ^(go|process|promhttp).*
+              action: drop
+      resources: {}
+
+    # -- CRDs
+    # CRD spec: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md
+    # Prometheus instance
+    prometheus:
+      prometheusSpec:
+        replicas: 1
+        serviceMonitorSelectorNilUsesHelmValues: false
+        remoteWrite:
+          - url: http://mimir-distributor:8080/api/v1/push
+            headers:
+              "X-Scope-OrgID": shed
+            # drop the informations when metrics scarping
+            writeRelabelConfigs:
+              - sourceLabels: [__name__]
+                regex: ^(scrape_.*|up)
+                action: drop
+      serviceMonitor:
+        selfMonitor: true
+        metricRelabelings:
+          - sourceLabels: [__name__]
+            regex: ^(go|process).*
+            action: drop
+    # Alertmanager instacne
+    alertmanager:
+      alertmanagerSpec:
+        replicas: 1
+      serviceMonitor:
+        selfMonitor: true
+        metricRelabelings:
+          - sourceLabels: [__name__]
+            regex: ^(go|process).*
+            action: drop
+
+    # Servicemonitors
+    kubeEtcd:
+      enabled: true
+      endpoints:
+        - 192.168.253.1
+        - 192.168.253.2
+        - 192.168.253.3
+      service:
+        enabled: true
+        port: 2381
+        targetPort: 2381
+      serviceMonitor:
+        metricRelabelings:
+          - sourceLabels: [__name__]
+            # 27 metrics/endpoint
+            regex: "\
+              ^(\
+              etcd_server_has_leader|\
+              etcd_mvcc_db_total_size_in_bytes|\
+              process_resident_memory_bytes|\
+              etcd_disk_wal_fsync_duration_seconds_bucket|\
+              etcd_network_client_grpc_sent_bytes_total|\
+              etcd_network_client_grpc_received_bytes_total|\
+              etcd_network_peer_sent_bytes_total|\
+              etcd_network_peer_received_bytes_total|\
+              etcd_server_proposals_.*|\
+              etcd_server_leader_changes_seen_total\
+              )"
+            action: keep
+    kubeProxy:
+      enabled: false
+    kubeScheduler:
+      enabled: false
+    kubelet:
+      enabled: false
+    kubeApiServer:
+      enabled: false
+      serviceMonitor:
+        interval: 1m
+        metricRelabelings:
+          - sourceLabels: [__name__]
+            regex: ^(go|process).*
+            action: drop
+    kubeControllerManager:
+      enabled: false
+    coreDns:
+      enabled: false
+      serviceMonitor:
+        interval: 1m
+        metricRelabelings:
+          - sourceLabels: [__name__]
+            regex: ^(go|process).*
+            action: drop
+    # Prometheusrules
+    defaultRules:
+      create: false
+# Reduce metrics
+# 1. Count the metrics number of each target
+# count({service=~".+"}) by (service)
+#

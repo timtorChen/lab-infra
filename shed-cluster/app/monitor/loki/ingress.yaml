@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8, 192.168.0.0/16
+  namespace: monitor
+  name: loki-read
+spec:
+  rules:
+    - host: loki.${ROOT_DOMAIN}
+      # check the api endpoints: 
+      # https://grafana.com/docs/loki/latest/api/
+      http:
+        paths:
+          - backend:
+              service:
+                name: loki-read
+                port:
+                  number: 3100
+            path: /loki/api
+            pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8, 192.168.0.0/16
+  namespace: monitor
+  name: loki-write
+spec:
+  rules:
+    - host: loki.${ROOT_DOMAIN}
+      http:
+        paths:
+          - backend:
+              service:
+                name: loki-write
+                port:
+                  number: 3100
+            path: /loki/api/v1/push
+            pathType: Prefix
