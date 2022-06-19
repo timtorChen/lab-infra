@@ -1,4 +1,6 @@
 creation_rules:
-    - pgp: B5F09B452E660A84
-      path_regex: ansible/.*\.sops\.(yml|yaml)$
+    # -- The subkey 1CFC8FF236EC0896 would expire on 2023-06-19
+    # ansible secrets
+    - pgp: 1CFC8FF236EC0896
+      path_regex: ansible/project/.*\.sops\.(yml|yaml)$
       encrypted_regex: ([Pp]assword)

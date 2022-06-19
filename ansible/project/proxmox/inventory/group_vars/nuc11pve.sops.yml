@@ -28,9 +28,9 @@ pve_roles:
         - Sys.Console
 pve_users:
     - name: tf-prov@pve
-      password: ENC[AES256_GCM,data:bv3GU9UbrcElVMHjWi+pow==,iv:P/z1eFlvTGg7qMce3G/C4nERCrDfHVz+EzY3ML+piaM=,tag:p+qr5DBOjgtVAAIQEtM6Bw==,type:str]
+      password: ENC[AES256_GCM,data:DuvpcH0d5+yNBNlAjryxaQ==,iv:x/39lU0OoElW/RTqEfItC2hS3oTfulQHJOIwx3roaPc=,tag:y9ZpMf2NbIZgXxpornxRrw==,type:str]
     - name: k8s-exporter@pve
-      password: ENC[AES256_GCM,data:M38F65doU8fV2+5cNwsdjQwWUvID,iv:Syo7m1DyjiXQCvyshuz7u4mNL8M8kByyid8g6W8aKU4=,tag:cMg4EWhb9fbx8mj0rZWXPw==,type:str]
+      password: ENC[AES256_GCM,data:EhFfokyQKeSBqlqHfigtZLV9MNbx,iv:HPC6YxSGxax2Ngn/sNJZyC2HSWHCnmt4gc9hWiyJ1v4=,tag:ZattKbkt3ci5/pNl2d91vQ==,type:str]
 pve_acls:
     - path: /
       roles:
@@ -91,34 +91,26 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-05-17T17:33:28Z"
-    mac: ENC[AES256_GCM,data:w1lmwCkcWoJYVLotCgg7r2INFf1LD8WK9NTGSYYKn6KOrddGPOKS/inl7Nl/ivMKrJ8LUg+mS2bRoub5gQZdL+uSRIhwOUytJlXtkqXMlB6KcghszFcaYxX57yVYAycwhHdTG2vIS3L5qHfC/UrcNzZ+vE81SC5Q0HM3FG6Am14=,iv:CHHC8bpK5cCLMAFBji5BCL8BzD4BK/fqKyYlwxGBwhE=,tag:ZIUXUvT4R51/Ru2UJUoANQ==,type:str]
+    lastmodified: "2022-06-19T16:09:16Z"
+    mac: ENC[AES256_GCM,data:IHZW4P4jwG68mbV+kQN2iorPmQaS72fc4K0StCbyvGtvnrF3I+ji+QpJYb/ADnWSwpSmSMTls82NXf2O9VqfOWnnwIHLGPP5X7NaSttKqSPQZ4erssXQ822vWlDZQZAaxPcZzLT0gm2ceryvy+LErmNByfopd/GiZ6qYBWSagA4=,iv:4Ih6+EHN4Hpa/4cuD32XuGrenKaUU96hB5JYznIiLPU=,tag:7s3nKUvIqTzP2a3rCPCing==,type:str]
     pgp:
-        - created_at: "2022-05-17T17:33:27Z"
+        - created_at: "2022-06-19T16:09:15Z"
           enc: |
             -----BEGIN PGP MESSAGE-----
 
-            hQMOA7Xwm0UuZgqEEAwAjkQxgg/e7GqYxElRzMgRmWGinDEyVUEAXiwMryuYe4uN
-            miyQ50tkRudufzN4bhIAZj1gXc4Z9RWnGVRxEXqXIKQt0jkhUcdMZKjeOSC7MdBQ
-            VkTo5pDjfd1+DU/99Fo1rtY657vFMWlGbGpzOSUm4/eg5nTru9nXg/ASDyMUXYVL
-            fV6ze3A5htZWkZq2GzNRlEvE1ZrvEn6M8320DOuGW8NZSxktqEIVb2ywzAAsAbXc
-            haOinMLKQcSwztvsRH4Sa/Z3eE47zNewtMIPYN1oktAZvVvinvTBJ0ljKICSAS/T
-            vnoiKEszv6ej/ZQNfeQra1t86onN6E9rslNlNivmfjbOt3Lj8fjKgb3JRfwAs8z5
-            EpM5DeBQfewsElSnkbRTEeOWFgxBbPrkCPJvsPoj4OPfmRx/sBRfXw1o/ePfo+Qs
-            iiQwEgm+9sKa3iR+P28SBZYmKTZ6BTmaE4HD9h3hMK4V16zrAlMvnJq3xBWojtIq
-            LjyztimxbY7SQKEA81/XC/90Ci80oMrnux6RHCeJauZvx3ycsZGXPFOCdbPHa7Cw
-            XX2vdLnpl85x5c9zNAuajoNvzeW+x8KBJVjKd36cKiqXKfj8t9YBsOZ/+k+FgBbk
-            0A3G5OWMNjezNKthchq+NpjaBL6naJtMNaoWKCt/j3+WqIvDGrvx8ZCYCvcIp61h
-            HnzOGWHJBz1QGFz9nyjIu0PCO2wrAWcd5tgjWqpR3fx1J8fDDZpzq2NK8wQ/dJM2
-            9CdOmtl1ksbEkDp+C4kl6VjIR+Iwwn/46bG3wJOqrShALGuHXLE2rzeRBfnmo3dw
-            Fr5jcCXG3fXIAaQM/wDtkqqniB+Wv5yx84+C2CnvL1HrrlRcLJ96k3129svjTiFr
-            zYMNNzivtYAFYN7KiqbsPrURmXT9S+vuQbw6Im78EjxYjmRHu01S3mE9kKe/wDBF
-            5Up6yJIRTz4ei+IuBgUhbHO3RXBJvg+OxzTGCthHmIC7f1SeguJaAsZaj8LGbjHd
-            oGM59iX2bwibcA3tnBW9G9fSXgFMWzLd1HapVmVhyBwjySm2lVxXeVPM6A8H7A1p
-            DW6OYVoB1btuuH66iaQsvxD8H0hgJuBQaFvHUf1haYq3x1qzplXPVbzHlgNKoq4T
-            h/p+8yBAaEkY7EyOZkfhM6I=
-            =VADP
+            hQGMAxz8j/I27AiWAQv/fCV4TEYMbJgQLj7bg7sKYUKZRo5aFjvD/Nv2N7cj9YEM
+            tM/oenKb98KJqKMkt38keC5+7SnzTDBVp3kLBwCkwZmGlGMnRBy6gu7gXtz66bAN
+            NbDk5/X8bTrBDejuiGNDJFGCLP0Nv8+07K2nmeDKTFArYbXZ0W7YKLQsWhSH+Qfa
+            EraHfRMWAYBezfJu5NxqUd9sNLIDeasWkgX/96JKUjcgTEUGo99mlf4YfFgjTvrp
+            m/L5/RsG31pDQ6cgRf8MY9XB9ebsHbpTSUe/7m8cSJ9LxOfzKyM+iuOd2ExdH1tb
+            l8Sh+loZa+v2sMaSjwFQGe1bifVUtpg/ygymmvUdPAUG467ZMIhUBWnw+8EEUhg+
+            MCRT/Meff0xsjWbVoIMVEstp0BT7PW7KlzPfUISKUSxlGx7nz0suagVeeVKixV66
+            DIfPHorpIMznutwWSuwEzboxyPBJOgTrUkFA8YUlvYU2zkyVuSugofGUTFz9x8K9
+            bal6SKAMFNneh7m3Vdy20lwBWmHWXAx61nyFVyVDyHo4SmwNWxWnIFhWtyo2n2RH
+            Q7S9B/eHthtDg2SJ4t9aYhLivcVU3gxcdSvC4ouhzSt3p/ri9oCkqlPxuZJ0EOXA
+            YhhAuOXcbioL8ZQrEA==
+            =P3MB
             -----END PGP MESSAGE-----
-          fp: B5F09B452E660A84
+          fp: 1CFC8FF236EC0896
     encrypted_regex: ([Pp]assword)
-    version: 3.7.2
+    version: 3.7.3
